@@ -1,0 +1,8 @@
+# Source data holds donor names and emails, so it never enters git.
+data/
+mlruns/
+mlartifacts/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
