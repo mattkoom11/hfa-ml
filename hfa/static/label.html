@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HFA Labeling</title>
+<style>
+  :root {
+    --bg: #f7f6f3; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a66; --line: #e2e0da;
+    --chip: #f0eee9; --chip-on: #1f4e79; --chip-on-ink: #ffffff; --none-on: #6b6a66;
+    --accent: #1f4e79; --warn: #b3261e; --warn-bg: #fbeae8; --ok: #2e7d32;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161615; --panel: #1f1f1d; --ink: #ecebe7; --muted: #a09e98; --line: #34332f;
+      --chip: #2a2a27; --chip-on: #7fb0e0; --chip-on-ink: #10213a; --none-on: #a09e98;
+      --accent: #7fb0e0; --warn: #f2b8b5; --warn-bg: #3b1d1b; --ok: #81c995;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 20px 16px 60px; }
+  header { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  h1 { font-size: 17px; margin: 0; font-weight: 600; }
+  .progress { flex: 1; min-width: 200px; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .progress > div { height: 100%; background: var(--accent); width: 0; transition: width .2s; }
+  .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+  .meta { display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .desc { font-size: 19px; line-height: 1.55; margin: 6px 0 4px; }
+  .status { font-size: 13px; min-height: 20px; margin-top: 6px; }
+  .status.saved { color: var(--ok); }
+  .group { margin-top: 18px; padding: 12px; border-radius: 8px; border: 1px solid transparent; }
+  .group.missing { border-color: var(--warn); background: var(--warn-bg); }
+  .group h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 8px; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 999px;
+          padding: 4px 11px; font: inherit; font-size: 14px; cursor: pointer; }
+  .chip:hover { border-color: var(--accent); }
+  .chip.on { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
+  .chip.none { border-style: dashed; }
+  .chip.none.on { background: var(--none-on); border-color: var(--none-on); color: var(--panel); }
+  .other { margin-top: 8px; width: 100%; max-width: 420px; padding: 6px 9px; border-radius: 6px;
+           border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; font-size: 14px; }
+  textarea.other { max-width: 100%; min-height: 54px; resize: vertical; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
+  button.act { font: inherit; padding: 8px 14px; border-radius: 7px; border: 1px solid var(--line);
+               background: var(--panel); color: var(--ink); cursor: pointer; }
+  button.primary { background: var(--accent); color: var(--chip-on-ink); border-color: var(--accent); }
+  .keys { color: var(--muted); font-size: 12.5px; margin-left: auto; }
+  kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 12px; }
+  details { margin-top: 18px; color: var(--muted); font-size: 13.5px; }
+  details li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Historic Fashion Archive · description labels</h1>
+    <div class="progress"><div id="bar"></div></div>
+    <span class="count" id="count">loading…</span>
+  </header>
+
+  <div class="card">
+    <div class="meta" id="meta"></div>
+    <div class="desc" id="desc"></div>
+    <div class="status" id="status"></div>
+    <div id="groups"></div>
+    <div class="group" style="padding-top:0">
+      <h2>Note (optional)</h2>
+      <textarea class="other" id="note" placeholder="Anything odd about this description"></textarea>
+    </div>
+    <div class="bar">
+      <button class="act" id="prev">← Back</button>
+      <button class="act" id="skip">Skip</button>
+      <button class="act primary" id="save">Save &amp; next</button>
+      <button class="act" id="jump">Next unlabeled</button>
+      <span class="keys"><kbd>Enter</kbd> save · <kbd>←</kbd>/<kbd>→</kbd> move · <kbd>Esc</kbd> leave a text box</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>Labeling rules</summary>
+    <ul>
+      <li>Label what the <b>text says</b>, not what you'd guess from the garment type or era.</li>
+      <li>If an attribute isn't mentioned, click <b>none stated</b> for that group. Saving with a group left empty is blocked, so a forgotten group can't pass as "none".</li>
+      <li>Words the list doesn't cover go in the <b>other</b> box (e.g. "lawn", "organza", "tulle"), separated by commas.</li>
+      <li><b>Materials include everything named</b>, hardware too: "metal zipper" → metal, "glass buttons" → glass, "shell buttons" → other: shell. Lining and trim fabrics count. (Decided 2026-10-11.)</li>
+      <li><b>Hardware colors don't count</b>: "black dome buttons" on a navy suit → navy only. Color describes the garment's fabric. (Decided 2026-10-11.)</li>
+      <li>A fiber named with a fabric gets <b>both</b>: "silk velvet" → silk + velvet; "silk jacquard" → silk (+ other: jacquard).</li>
+      <li><b>Exact list words only.</b> Ivory is not cream; it goes in other. Fabric names that contain a list word count: "crepe de chine" and "satin crepe" → crepe; "velveteen" → velvet. Two-word colors take the more specific word: "navy blue" → navy, "rust brown" → rust. "Grey" → gray.</li>
+      <li>"Print" / "printed" → <b>printing</b>. "Pleated" → <b>pleating</b>. "Knit" → <b>knitting</b>. Pattern words (floral, plaid, striped) get no label.</li>
+      <li><b>Weaving</b> only when the weave is a visible feature ("woven stripe", "woven pattern"). Plain "woven fabric/lining" gets no technique; "beads woven in" is beading. (Decided 2026-10-11.)</li>
+      <li>Technique is usually "none stated", so reread the text for these words before pressing Enter.</li>
+      <li>Skip only when the description is unusable (blank, not about the object, illegible).</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+const FIELDS = ["material", "color", "technique"];
+let vocab = {}, items = [], labels = {}, idx = 0, state = null;
+
+const $ = (id) => document.getElementById(id);
+
+function blank() {
+  const s = { note: "" };
+  for (const f of FIELDS) { s[f] = new Set(); s[f + "_none"] = false; s["other_" + f] = ""; }
+  return s;
+}
+
+function fromRecord(r) {
+  const s = blank();
+  if (!r) return s;
+  for (const f of FIELDS) {
+    s[f] = new Set(r[f] || []);
+    s[f + "_none"] = !!r[f + "_none"];
+    s["other_" + f] = r["other_" + f] || "";
+  }
+  s.note = r.note || "";
+  return s;
+}
+
+function buildGroups() {
+  const root = $("groups");
+  root.innerHTML = "";
+  for (const f of FIELDS) {
+    const g = document.createElement("div");
+    g.className = "group"; g.id = "g-" + f;
+    g.innerHTML = `<h2>${f}</h2><div class="chips"></div>
+      <input class="other" id="other-${f}" placeholder="other ${f} words not in the list">`;
+    const chips = g.querySelector(".chips");
+    for (const v of vocab[f]) {
+      const b = document.createElement("button");
+      b.className = "chip"; b.textContent = v.label; b.dataset.field = f; b.dataset.code = v.code;
+      b.onclick = () => { toggle(f, v.code); };
+      chips.appendChild(b);
+    }
+    const none = document.createElement("button");
+    none.className = "chip none"; none.textContent = "none stated"; none.dataset.field = f; none.dataset.none = "1";
+    none.onclick = () => { state[f + "_none"] = !state[f + "_none"]; if (state[f + "_none"]) state[f].clear(); paint(); };
+    chips.appendChild(none);
+    g.querySelector("input").oninput = (e) => { state["other_" + f] = e.target.value; };
+    root.appendChild(g);
+  }
+}
+
+function toggle(f, code) {
+  state[f].has(code) ? state[f].delete(code) : state[f].add(code);
+  if (state[f].size) state[f + "_none"] = false;
+  paint();
+}
+
+function paint() {
+  for (const b of document.querySelectorAll(".chip")) {
+    const f = b.dataset.field;
+    b.classList.toggle("on", b.dataset.none ? state[f + "_none"] : state[f].has(b.dataset.code));
+  }
+  for (const f of FIELDS) $("g-" + f).classList.remove("missing");
+}
+
+function show(i) {
+  idx = Math.max(0, Math.min(items.length - 1, i));
+  const it = items[idx], rec = labels[it.accession];
+  state = fromRecord(rec);
+  // Spreadsheet text goes in via textContent so stray markup in a title can't render as HTML.
+  const meta = $("meta");
+  meta.replaceChildren();
+  [it.accession, it.title, `type: ${it.ca_type} (${it.group})`, it.date_raw].forEach((txt, k) => {
+    const span = document.createElement("span");
+    const el = k === 0 ? document.createElement("b") : span;
+    el.textContent = txt || "";
+    if (k === 0) span.appendChild(el);
+    meta.appendChild(span);
+  });
+  $("desc").textContent = it.description;
+  for (const f of FIELDS) $("other-" + f).value = state["other_" + f];
+  $("note").value = state.note;
+  const st = $("status");
+  st.className = "status" + (rec ? " saved" : "");
+  st.textContent = rec ? `${rec.status === "skipped" ? "Skipped" : "Saved"} ${rec.labeled_at.replace("T", " ").slice(0, 16)} UTC` : "";
+  paint();
+  progress();
+}
+
+function progress() {
+  const done = items.filter((it) => labels[it.accession]).length;
+  $("count").textContent = `${done} / ${items.length} labeled · showing ${idx + 1}`;
+  $("bar").style.width = (100 * done / items.length) + "%";
+}
+
+async function save(status) {
+  state.note = $("note").value;
+  if (status === "done") {
+    const missing = FIELDS.filter((f) => state[f].size === 0 && !state[f + "_none"]);
+    if (missing.length) {
+      for (const f of missing) $("g-" + f).classList.add("missing");
+      $("status").className = "status"; $("status").textContent = "Pick at least one value or 'none stated' in each highlighted group.";
+      return;
+    }
+  }
+  const body = { accession: items[idx].accession, status, note: state.note };
+  for (const f of FIELDS) {
+    body[f] = [...state[f]]; body[f + "_none"] = state[f + "_none"]; body["other_" + f] = state["other_" + f];
+  }
+  const res = await fetch("/api/label", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  if (!res.ok) { $("status").textContent = "Save failed. Is the server still running?"; return; }
+  labels[items[idx].accession] = (await res.json()).record;
+  if (idx < items.length - 1) show(idx + 1); else { show(idx); $("status").textContent = "Saved. That was the last one."; }
+}
+
+function nextUnlabeled() {
+  const n = items.findIndex((it, i) => i > idx && !labels[it.accession]);
+  const any = n >= 0 ? n : items.findIndex((it) => !labels[it.accession]);
+  if (any >= 0) show(any); else $("status").textContent = "Everything is labeled.";
+}
+
+document.addEventListener("keydown", (e) => {
+  const typing = ["INPUT", "TEXTAREA"].includes(document.activeElement.tagName);
+  if (e.key === "Escape") { document.activeElement.blur(); return; }
+  if (typing) return;
+  if (e.key === "Enter") { e.preventDefault(); save("done"); }
+  else if (e.key === "ArrowRight") show(idx + 1);
+  else if (e.key === "ArrowLeft") show(idx - 1);
+});
+$("save").onclick = () => save("done");
+$("skip").onclick = () => save("skipped");
+$("prev").onclick = () => show(idx - 1);
+$("jump").onclick = nextUnlabeled;
+
+fetch("/api/items").then((r) => r.json()).then((d) => {
+  vocab = d.vocab; items = d.items; labels = d.labels || {};
+  buildGroups();
+  // #ACCESSION in the URL jumps straight to that garment (for fixing earlier labels).
+  const byHash = () => items.findIndex((it) => it.accession === decodeURIComponent(location.hash.slice(1)));
+  window.addEventListener("hashchange", () => { const h = byHash(); if (h >= 0) show(h); });
+  const h = byHash(), first = items.findIndex((it) => !labels[it.accession]);
+  show(h >= 0 ? h : first >= 0 ? first : 0);
+});
+</script>
+</body>
+</html>

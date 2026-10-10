@@ -3,3 +3,7 @@ openpyxl>=3.1
 pyarrow>=17
 pytest>=8
 mlflow>=3
+torch>=2.9
+torchvision
+open_clip_torch>=3
+scikit-learn>=1.5

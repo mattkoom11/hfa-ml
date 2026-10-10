@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HFA Relevance Judging</title>
+<style>
+  :root {
+    --bg: #f7f6f3; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a66; --line: #e2e0da;
+    --accent: #1f4e79; --accent-ink: #ffffff; --g0: #8a8780; --g1: #b7791f; --g2: #2e7d32; --ok: #2e7d32;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161615; --panel: #1f1f1d; --ink: #ecebe7; --muted: #a09e98; --line: #34332f;
+      --accent: #7fb0e0; --accent-ink: #10213a; --g0: #a09e98; --g1: #e0b45a; --g2: #81c995; --ok: #81c995;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 16px 16px 48px; }
+  header { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
+  h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  .progress { flex: 1; min-width: 180px; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .progress > div { height: 100%; background: var(--accent); width: 0; }
+  .count { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .card.query { position: sticky; top: 12px; }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-bottom: 6px; }
+  .photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 10px; }
+  .photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: var(--bg); border-radius: 6px; cursor: zoom-in; }
+  .photos.empty { display: block; color: var(--muted); font-size: 13px; }
+  .meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+  .meta b { color: var(--ink); }
+  .desc { margin-top: 6px; font-size: 15px; }
+  .grades { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .grade { flex: 1; min-width: 110px; font: inherit; padding: 10px; border-radius: 8px; border: 2px solid var(--line);
+           background: var(--panel); color: var(--ink); cursor: pointer; text-align: left; }
+  .grade b { display: block; font-size: 15px; }
+  .grade span { font-size: 12.5px; color: var(--muted); }
+  .grade.on[data-g="0"] { border-color: var(--g0); }
+  .grade.on[data-g="1"] { border-color: var(--g1); }
+  .grade.on[data-g="2"] { border-color: var(--g2); }
+  .note { width: 100%; margin-top: 8px; padding: 6px 9px; border-radius: 6px; border: 1px solid var(--line);
+          background: var(--bg); color: var(--ink); font: inherit; font-size: 14px; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+  button.act { font: inherit; font-size: 14px; padding: 7px 12px; border-radius: 7px; border: 1px solid var(--line);
+               background: var(--panel); color: var(--ink); cursor: pointer; }
+  .status { font-size: 13px; color: var(--ok); min-height: 18px; margin-top: 6px; }
+  .keys { color: var(--muted); font-size: 12.5px; margin-left: auto; }
+  kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 12px; }
+  details { margin-top: 14px; font-size: 14px; }
+  details li { margin: 4px 0; }
+  .zoom { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; cursor: zoom-out; }
+  .zoom img { max-width: 94vw; max-height: 94vh; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Historic Fashion Archive · related-garment judging</h1>
+    <div class="progress"><div id="bar"></div></div>
+    <span class="count" id="count">loading…</span>
+  </header>
+
+  <details open id="rubric">
+    <summary><b>Rubric</b> (would a visitor looking at the left garment want to see the right one next?)</summary>
+    <ul>
+      <li><b>2 · Strongly related:</b> the same kind of object <i>and</i> close in period or style. A visitor would click it.</li>
+      <li><b>1 · Somewhat related:</b> one clear connection. Same kind of object but a different period or style; or same period and style but a different kind of object; or a distinctive shared material or technique.</li>
+      <li><b>0 · Not related:</b> no connection a visitor would see.</li>
+      <li>Judge the garments, not the photo quality. Use the note for anything odd.</li>
+    </ul>
+  </details>
+
+  <div class="grid">
+    <div class="card query">
+      <div class="label" id="qlabel">Query</div>
+      <div id="qcard"></div>
+    </div>
+    <div class="card">
+      <div class="label" id="clabel">Candidate</div>
+      <div id="ccard"></div>
+      <div class="grades">
+        <button class="grade" data-g="0"><b>0 · Not related</b><span>no visible connection</span></button>
+        <button class="grade" data-g="1"><b>1 · Somewhat</b><span>one clear connection</span></button>
+        <button class="grade" data-g="2"><b>2 · Strongly</b><span>same kind + close period/style</span></button>
+      </div>
+      <input class="note" id="note" placeholder="Note (optional)">
+      <div class="status" id="status"></div>
+      <div class="bar">
+        <button class="act" id="prev">← Back</button>
+        <button class="act" id="next">Skip →</button>
+        <button class="act" id="jump">Next ungraded</button>
+        <span class="keys"><kbd>0</kbd><kbd>1</kbd><kbd>2</kbd> grade &amp; next · <kbd>←</kbd>/<kbd>→</kbd> move · click a photo to enlarge</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let state = null, pairs = [], idx = 0;
+const $ = (id) => document.getElementById(id);
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function renderCard(target, card) {
+  target.replaceChildren();
+  const photos = el("div", "photos" + (card.photos.length ? "" : " empty"));
+  if (!card.photos.length) photos.textContent = "No photo available";
+  for (const src of card.photos) {
+    const img = el("img"); img.src = src; img.loading = "lazy"; img.alt = card.title || card.accession;
+    img.onclick = () => zoom(src);
+    photos.appendChild(img);
+  }
+  const meta = el("div", "meta");
+  const b = el("b", "", card.accession); const s0 = el("span"); s0.appendChild(b); meta.appendChild(s0);
+  for (const t of [card.title, "type: " + card.type, card.date]) if (t) meta.appendChild(el("span", "", t));
+  target.append(photos, meta, el("div", "desc", card.description || "(no description)"));
+}
+
+function zoom(src) {
+  const z = el("div", "zoom"); const img = el("img"); img.src = src; z.appendChild(img);
+  z.onclick = () => z.remove(); document.body.appendChild(z);
+}
+
+function grade(q, c) { return state.judgments[q] && state.judgments[q][c]; }
+
+function show(i) {
+  idx = Math.max(0, Math.min(pairs.length - 1, i));
+  const [q, c, qi, ci, n] = pairs[idx];
+  renderCard($("qcard"), state.cards[q]);
+  renderCard($("ccard"), state.cards[c]);
+  $("qlabel").textContent = `Query ${qi + 1} of ${state.queries.length}`;
+  $("clabel").textContent = `Candidate ${ci + 1} of ${n}`;
+  const g = grade(q, c);
+  document.querySelectorAll(".grade").forEach((b) => b.classList.toggle("on", !!g && String(g.grade) === b.dataset.g));
+  $("note").value = g ? g.note : "";
+  $("status").textContent = g ? `Graded ${g.grade}` : "";
+  progress();
+}
+
+function progress() {
+  const done = pairs.filter(([q, c]) => grade(q, c)).length;
+  $("count").textContent = `${done} / ${pairs.length} judged`;
+  $("bar").style.width = (100 * done / pairs.length) + "%";
+}
+
+async function submit(g) {
+  const [q, c] = pairs[idx];
+  const res = await fetch("/api/grade", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query: q, candidate: c, grade: g, note: $("note").value }) });
+  if (!res.ok) { $("status").textContent = "Save failed. Is the server still running?"; return; }
+  (state.judgments[q] = state.judgments[q] || {})[c] = (await res.json()).record;
+  if (idx < pairs.length - 1) show(idx + 1); else { show(idx); $("status").textContent = "Saved. That was the last pair."; }
+}
+
+function nextUngraded() {
+  const n = pairs.findIndex(([q, c], i) => i > idx && !grade(q, c));
+  const any = n >= 0 ? n : pairs.findIndex(([q, c]) => !grade(q, c));
+  if (any >= 0) show(any); else $("status").textContent = "Everything is judged.";
+}
+
+document.addEventListener("keydown", (e) => {
+  if (document.querySelector(".zoom")) { if (e.key === "Escape") document.querySelector(".zoom").remove(); return; }
+  if (document.activeElement.tagName === "INPUT") { if (e.key === "Escape") document.activeElement.blur(); return; }
+  if (["0", "1", "2"].includes(e.key)) submit(Number(e.key));
+  else if (e.key === "ArrowRight") show(idx + 1);
+  else if (e.key === "ArrowLeft") show(idx - 1);
+});
+document.querySelectorAll(".grade").forEach((b) => b.onclick = () => submit(Number(b.dataset.g)));
+$("prev").onclick = () => show(idx - 1);
+$("next").onclick = () => show(idx + 1);
+$("jump").onclick = nextUngraded;
+
+fetch("/api/state").then((r) => r.json()).then((d) => {
+  state = d;
+  state.queries.forEach((q, qi) => q.candidates.forEach((c, ci) => pairs.push([q.query, c, qi, ci, q.candidates.length])));
+  const first = pairs.findIndex(([q, c]) => !grade(q, c));
+  show(first >= 0 ? first : 0);
+});
+</script>
+</body>
+</html>

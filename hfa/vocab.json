@@ -1,0 +1,275 @@
+{
+ "source": "uva_fashion.xml (CA installation profile), lists material_types / color_types / technique_types",
+ "lists": {
+  "material": [
+   {
+    "code": "acetate",
+    "label": "acetate"
+   },
+   {
+    "code": "acrylic",
+    "label": "acrylic"
+   },
+   {
+    "code": "angora",
+    "label": "angora"
+   },
+   {
+    "code": "brocade",
+    "label": "brocade"
+   },
+   {
+    "code": "cashmere",
+    "label": "cashmere"
+   },
+   {
+    "code": "chiffon",
+    "label": "chiffon"
+   },
+   {
+    "code": "cotton",
+    "label": "cotton"
+   },
+   {
+    "code": "crepe",
+    "label": "crepe"
+   },
+   {
+    "code": "damask",
+    "label": "damask"
+   },
+   {
+    "code": "elastic",
+    "label": "elastic"
+   },
+   {
+    "code": "felt",
+    "label": "felt"
+   },
+   {
+    "code": "georgette",
+    "label": "georgette"
+   },
+   {
+    "code": "glass",
+    "label": "glass"
+   },
+   {
+    "code": "hemp",
+    "label": "hemp"
+   },
+   {
+    "code": "lace",
+    "label": "lace"
+   },
+   {
+    "code": "leather",
+    "label": "leather"
+   },
+   {
+    "code": "linen",
+    "label": "linen"
+   },
+   {
+    "code": "metal",
+    "label": "metal"
+   },
+   {
+    "code": "nylon",
+    "label": "nylon"
+   },
+   {
+    "code": "polyester",
+    "label": "polyester"
+   },
+   {
+    "code": "rayon",
+    "label": "rayon"
+   },
+   {
+    "code": "satin",
+    "label": "satin"
+   },
+   {
+    "code": "silk",
+    "label": "silk"
+   },
+   {
+    "code": "spandex",
+    "label": "spandex"
+   },
+   {
+    "code": "taffeta",
+    "label": "taffeta"
+   },
+   {
+    "code": "velvet",
+    "label": "velvet"
+   },
+   {
+    "code": "wool",
+    "label": "wool"
+   }
+  ],
+  "color": [
+   {
+    "code": "beige",
+    "label": "beige"
+   },
+   {
+    "code": "black",
+    "label": "black"
+   },
+   {
+    "code": "blue",
+    "label": "blue"
+   },
+   {
+    "code": "brown",
+    "label": "brown"
+   },
+   {
+    "code": "burgundy",
+    "label": "burgundy"
+   },
+   {
+    "code": "coral",
+    "label": "coral"
+   },
+   {
+    "code": "cream",
+    "label": "cream"
+   },
+   {
+    "code": "fuchsia",
+    "label": "fuchsia"
+   },
+   {
+    "code": "gold",
+    "label": "gold"
+   },
+   {
+    "code": "gray",
+    "label": "gray"
+   },
+   {
+    "code": "green",
+    "label": "green"
+   },
+   {
+    "code": "lavender",
+    "label": "lavender"
+   },
+   {
+    "code": "maroon",
+    "label": "maroon"
+   },
+   {
+    "code": "multi",
+    "label": "multi"
+   },
+   {
+    "code": "navy",
+    "label": "navy"
+   },
+   {
+    "code": "orange",
+    "label": "orange"
+   },
+   {
+    "code": "pink",
+    "label": "pink"
+   },
+   {
+    "code": "purple",
+    "label": "purple"
+   },
+   {
+    "code": "red",
+    "label": "red"
+   },
+   {
+    "code": "rust",
+    "label": "rust"
+   },
+   {
+    "code": "tan",
+    "label": "tan"
+   },
+   {
+    "code": "teal",
+    "label": "teal"
+   },
+   {
+    "code": "turquoise",
+    "label": "turquoise"
+   },
+   {
+    "code": "white",
+    "label": "white"
+   },
+   {
+    "code": "yellow",
+    "label": "yellow"
+   }
+  ],
+  "technique": [
+   {
+    "code": "applique",
+    "label": "applique"
+   },
+   {
+    "code": "beading",
+    "label": "beading"
+   },
+   {
+    "code": "braiding",
+    "label": "braiding"
+   },
+   {
+    "code": "crocheting",
+    "label": "crocheting"
+   },
+   {
+    "code": "embroidery",
+    "label": "embroidery"
+   },
+   {
+    "code": "hand_sewing",
+    "label": "hand sewing"
+   },
+   {
+    "code": "knitting",
+    "label": "knitting"
+   },
+   {
+    "code": "machine_sewing",
+    "label": "machine sewing"
+   },
+   {
+    "code": "needlepoint",
+    "label": "needlepoint"
+   },
+   {
+    "code": "painting",
+    "label": "painting"
+   },
+   {
+    "code": "pleating",
+    "label": "pleating"
+   },
+   {
+    "code": "printing",
+    "label": "printing"
+   },
+   {
+    "code": "quilting",
+    "label": "quilting"
+   },
+   {
+    "code": "weaving",
+    "label": "weaving"
+   }
+  ]
+ }
+}
