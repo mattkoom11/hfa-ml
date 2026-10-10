@@ -44,8 +44,17 @@ def main() -> None:
     # One row per usable accession; duplicate accession rows stay out until a curator resolves them.
     g = clean[clean["accession"].notna() & ~clean["accession"].duplicated(keep=False)].copy()
     g = g.merge(cov, on="accession", how="left")
-    for c in ("n_files", "n_shots", "n_web", "n_raw", "n_folders"):
+    conv_path = ROOT / "data/interim/converted_jpgs.parquet"
+    if conv_path.exists():
+        conv = pd.read_parquet(conv_path)
+        conv = conv[conv["status"].isin(["converted", "skipped"])].groupby("accession").size().rename("n_converted")
+        g = g.merge(conv, left_on="accession", right_index=True, how="left")
+    else:
+        g["n_converted"] = 0
+    for c in ("n_files", "n_shots", "n_web", "n_raw", "n_folders", "n_converted"):
         g[c] = g[c].fillna(0).astype(int)
+    # JPGs the ML phases can read: ones on the share plus ones converted from RAW.
+    g["n_ml_jpg"] = g["n_web"] + g["n_converted"]
     g["has_photos"] = g["n_shots"] > 0
     g["split"] = assign_splits(g.reset_index(drop=True)).values
     g.to_parquet(ROOT / "data/processed/garments.parquet", index=False)
@@ -53,7 +62,8 @@ def main() -> None:
     orphans = sorted(set(cov["accession"]) - set(clean["accession"].dropna()))
     print(f"garments: {len(g)}  photographed: {g['has_photos'].sum()}  "
           f"photographed+described: {(g['has_photos'] & g['has_description']).sum()}  "
-          f"usable now (JPG + description): {((g['n_web'] > 0) & g['has_description']).sum()}")
+          f"usable now (JPG + description): {((g['n_ml_jpg'] > 0) & g['has_description']).sum()}  "
+          f"with any JPG: {(g['n_ml_jpg'] > 0).sum()}")
     print("split sizes:", g["split"].value_counts().to_dict())
     print(pd.crosstab(g["group"].fillna("unknown"), g["split"]).to_string())
     print(f"photo folders with no spreadsheet row: {len(orphans)}")
@@ -72,8 +82,9 @@ def main() -> None:
             "photographed": int(g["has_photos"].sum()),
             "described": int(g["has_description"].sum()),
             "photographed_and_described": int((g["has_photos"] & g["has_description"]).sum()),
-            "jpg_and_described": int(((g["n_web"] > 0) & g["has_description"]).sum()),
-            "raw_only": int(((g["n_raw"] > 0) & (g["n_web"] == 0)).sum()),
+            "jpg_and_described": int(((g["n_ml_jpg"] > 0) & g["has_description"]).sum()),
+            "with_jpg": int((g["n_ml_jpg"] > 0).sum()),
+            "raw_only_unconverted": int(((g["n_raw"] > 0) & (g["n_ml_jpg"] == 0)).sum()),
             "photo_orphans": len(orphans),
             **{f"split_{k}": int(v) for k, v in g["split"].value_counts().items()},
         })
