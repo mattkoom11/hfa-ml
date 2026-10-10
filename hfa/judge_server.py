@@ -26,6 +26,7 @@ PAGE = Path(__file__).resolve().parent / "static/judge.html"
 JPG = (ROOT / "data/interim/jpg").resolve()
 POOL = ROOT / "data/judgments/pool.json"
 OUT = ROOT / "data/judgments/judgments.json"
+REJUDGE_SET = ROOT / "data/judgments/rejudge_set.json"
 MAX_PHOTOS = 4
 _lock = threading.Lock()
 
@@ -107,6 +108,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8766)
     ap.add_argument("--judge", default="matthew")
+    ap.add_argument("--rejudge", action="store_true",
+                    help="blind re-grade of data/judgments/rejudge_set.json into rejudgments.json; earlier grades hidden")
     ap.add_argument("--depth", type=int, default=5,
                     help="only show candidates in some system's top N (the site shows 4); 0 shows the whole pool")
     args = ap.parse_args()
@@ -114,12 +117,22 @@ def main() -> None:
         raise SystemExit("no pool yet; run: .venv/bin/python -m hfa.judge_sample")
 
     pool = json.loads(POOL.read_text())
+    if args.rejudge:
+        global OUT
+        OUT = ROOT / "data/judgments/rejudgments.json"
+        pairs = json.loads(REJUDGE_SET.read_text())["pairs"]  # already shuffled
+        pool = {}
+        for q, x in pairs:
+            pool.setdefault(q, {"candidates": []})["candidates"].append(x)
+        args.depth = 0
     if args.depth:
         # Grades already given beyond this depth stay in judgments.json; they just aren't asked for.
         from hfa.recsys import SYSTEMS, load_catalog, rank
         c = load_catalog()
+        cv_path = ROOT / "data/predictions/rerank_cv.json"
+        rerank_cv = json.loads(cv_path.read_text()) if cv_path.exists() else {}
         for q, e in pool.items():
-            keep = set().union(*[rank(c, q, s, args.depth) for s in SYSTEMS])
+            keep = set().union(*[rank(c, q, s, args.depth) for s in SYSTEMS], rerank_cv.get(q, [])[: args.depth])
             e["candidates"] = [x for x in e["candidates"] if x in keep]
     g = pd.read_parquet(ROOT / "data/processed/garments.parquet").set_index("accession")
     g = g.astype(object).where(g.notna(), None)

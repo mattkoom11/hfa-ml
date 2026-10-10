@@ -58,10 +58,15 @@ def main() -> None:
         raise SystemExit(f"{OUT} exists; use --extend to add systems, or delete it deliberately to redraw")
     pool = json.loads(OUT.read_text()) if args.extend else {q: {"candidates": [], "found_by": {}} for q in draw_queries(c, g)}
 
+    cv_path = ROOT / "data/predictions/rerank_cv.json"
+    rerank_cv = json.loads(cv_path.read_text()) if args.extend and cv_path.exists() else {}
     added = 0
     for q, entry in pool.items():
-        for system in SYSTEMS:
-            for x in rank(c, q, system, args.depth):
+        ranked = {s: rank(c, q, s, args.depth) for s in SYSTEMS}
+        if q in rerank_cv:
+            ranked["rerank"] = rerank_cv[q][: args.depth]  # Phase 4 out-of-fold rankings
+        for system, top in ranked.items():
+            for x in top:
                 entry["found_by"].setdefault(x, [])
                 if system not in entry["found_by"][x]:
                     entry["found_by"][x].append(system)

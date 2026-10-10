@@ -55,23 +55,30 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--k", type=int, default=5)
     ap.add_argument("--log", action="store_true")
+    ap.add_argument("--judgments", default="judgments.json",
+                    help="file under data/judgments/ (judgments_final.json uses the blind re-grades)")
     args = ap.parse_args()
 
-    judgments = json.loads((ROOT / "data/judgments/judgments.json").read_text())
+    judgments = json.loads((ROOT / "data/judgments" / args.judgments).read_text())
     pool = json.loads((ROOT / "data/judgments/pool.json").read_text())
     g = pd.read_parquet(ROOT / "data/processed/garments.parquet").set_index("accession")
     c = load_catalog()
     queries = [q for q in pool if q in judgments]
+    # The learned re-ranker's out-of-fold rankings (hfa.rerank), if they exist.
+    cv_path = ROOT / "data/predictions/rerank_cv.json"
+    rerank_cv = json.loads(cv_path.read_text()) if cv_path.exists() else {}
+    systems = list(SYSTEMS) + (["rerank"] if rerank_cv else [])
 
     rows = []
     for q in queries:
-        for s in SYSTEMS:
+        for s in systems:
+            ranking = rerank_cv[q] if s == "rerank" else rank(c, q, s, args.k)
             rows.append({"query": q, "group": g.at[q, "group"], "system": s,
-                         **per_query(judgments[q], rank(c, q, s, args.k), args.k)})
+                         **per_query(judgments[q], ranking, args.k)})
     df = pd.DataFrame(rows)
     grades = pd.Series([r["grade"] for q in queries for r in judgments[q].values()])
     print(f"{len(queries)} queries, {len(grades)} judgments; grade mix {grades.value_counts().sort_index().to_dict()}; "
-          f"unjudged results in top {args.k}: {int(df['unjudged'].sum())}\n")
+          f"unjudged results in top {args.k}: {df.groupby('system')['unjudged'].sum().to_dict()}\n")
 
     rng = np.random.default_rng(SEED)
     results = {}
@@ -80,7 +87,7 @@ def main() -> None:
         n = sub["query"].nunique()
         print(f"{scope} ({n} queries)")
         base = sub[sub["system"] == "fixed"].set_index("query")["ndcg"]
-        for s in SYSTEMS:
+        for s in systems:
             m = sub[sub["system"] == s].set_index("query")
             lo, hi = boot_ci(m["ndcg"].to_numpy(), rng)
             line = (f"  {s:12} nDCG@{args.k} {m['ndcg'].mean():.3f} [{lo:.3f}, {hi:.3f}]  "
@@ -95,7 +102,7 @@ def main() -> None:
 
     if args.log:
         from hfa import tracking
-        with tracking.start("phase3-recsys", f"judged@{args.k}"):
+        with tracking.start("phase3-recsys", f"judged@{args.k}:{args.judgments}"):
             tracking.mlflow.log_params({"k": args.k, "queries": len(queries), "judgments": len(grades)})
             for key, vals in results.items():
                 for metric, v in vals.items():

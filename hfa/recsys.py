@@ -7,6 +7,8 @@
   fixed_attrs  the same weights, with Phase 1 attributes filled in
                (keywords for described garments, the photo probe otherwise)
   image        cosine similarity of FashionCLIP garment embeddings
+  switch       fixed for clothing queries, image for accessory queries (the Phase 3
+               finding as a rule; the baseline the Phase 4 re-ranker has to beat)
 
 Candidates are photographed garments, the ones the site can show with an image.
 Ties are broken by accession so rankings are reproducible.
@@ -22,7 +24,7 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
-SYSTEMS = ("fixed", "fixed_attrs", "image")
+SYSTEMS = ("fixed", "fixed_attrs", "image", "switch")
 
 
 def era(year: float | None) -> str | None:
@@ -48,6 +50,8 @@ class Catalog:
     materials: dict[str, set[str]]
     emb: dict[str, np.ndarray]
     attr_source: dict[str, str]
+    group: dict[str, str | None]
+    techniques: dict[str, set[str]]
 
 
 def load_catalog() -> Catalog:
@@ -59,17 +63,19 @@ def load_catalog() -> Catalog:
     probe = json.loads((ROOT / "data/predictions/image_probe_top1.json").read_text())
 
     mid = ((g["date_earliest"].astype(float) + g["date_latest"].astype(float)) / 2).to_dict()
-    colors, materials, source = {}, {}, {}
+    colors, materials, techniques, source = {}, {}, {}, {}
     for a in accs:
         src = kw if a in kw else probe
         source[a] = "keyword" if a in kw else "probe"
         colors[a], materials[a] = set(src[a]["color"]), set(src[a]["material"])
+        techniques[a] = set(src[a]["technique"])
     return Catalog(
         accessions=accs,
         ca_type={a: g.at[a, "ca_type"] for a in accs},
         era={a: era(mid.get(a)) for a in accs},
         decade={a: None if np.isnan(mid.get(a, np.nan)) else int(mid[a] // 10 * 10) for a in accs},
         colors=colors, materials=materials, emb=emb, attr_source=source,
+        group={a: g.at[a, "group"] for a in accs}, techniques=techniques,
     )
 
 
@@ -93,6 +99,8 @@ def fixed_score(c: Catalog, q: str, x: str, use_attrs: bool) -> float:
 
 
 def scores(c: Catalog, q: str, system: str) -> dict[str, float]:
+    if system == "switch":
+        return scores(c, q, "image" if c.group[q] == "accessory" else "fixed")
     cands = [x for x in c.accessions if x != q]
     if system == "image":
         m = np.stack([c.emb[x] for x in cands])
