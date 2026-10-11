@@ -15,8 +15,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from hfa import tracking
-
 ROOT = Path(__file__).resolve().parent.parent
 SEED = 20261010
 FRACTIONS = {"train": 0.70, "val": 0.15, "test": 0.15}
@@ -69,6 +67,8 @@ def main() -> None:
     print(f"photo folders with no spreadsheet row: {len(orphans)}")
     (ROOT / "data/reports").mkdir(parents=True, exist_ok=True)
     pd.Series(orphans, name="accession").to_csv(ROOT / "data/reports/photo_orphans.csv", index=False)
+
+    from hfa import tracking  # here, not at the top: CI imports this module without mlflow installed
 
     with tracking.start("phase0-data", "build-garments"):
         source = ROOT / "data/raw/Historic_Collection_Updated.xlsx"

@@ -9,9 +9,9 @@ Contents (tests/fixtures/search/, committed):
   answers.json     cached grounded answers + the garments they were given
   baseline.json    nDCG@5 per system on this fixture, the floor CI checks against
 
-This is UVA collection data, committed only because the repo is private. Confirm
-with the archive that this subset may live on GitHub, and before making the repo
-public remove the fixture or replace it with a synthetic one.
+This is UVA collection data. The archive approved committing this subset to the
+private repo (Matthew, 2026-10-11). Before making the repo public, remove the
+fixture or replace it with a synthetic one.
 Run:  .venv/bin/python -m hfa.make_fixture [--distractors 100]
 """
 
