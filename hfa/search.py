@@ -2,6 +2,7 @@
 
   bm25    keyword search over title, description, type, date text and Phase 1 attributes
   clip    FashionCLIP: the query's text embedding against every garment's photo embedding
+  fusion  bm25 and clip merged by reciprocal rank fusion (no LLM; what the CPU-only VPS runs)
   hybrid  a local LLM (Ollama, qwen3:8b) parses the query into a decade range, a CA
           type and attribute lists; those become hard filters (decade, type) and soft
           boosts (material / color / technique), and CLIP ranks within the filters.
@@ -152,6 +153,18 @@ def clip_text(texts: list[str]) -> np.ndarray:
     return torch.nn.functional.normalize(e, dim=-1).cpu().numpy()
 
 
+RRF_K = 60  # the usual constant; damps the advantage of rank 1 over rank 2
+
+
+def rrf(orders: list) -> list[int]:
+    """Reciprocal rank fusion: each list adds 1 / (RRF_K + rank); highest total first."""
+    score: dict[int, float] = {}
+    for order in orders:
+        for rank, j in enumerate(order):
+            score[int(j)] = score.get(int(j), 0.0) + 1.0 / (RRF_K + rank + 1)
+    return sorted(score, key=lambda j: (-score[j], j))
+
+
 def rank_queries(queries: list[dict], parses: dict, table: pd.DataFrame, attrs: dict, emb: np.ndarray,
                  q_emb: np.ndarray, desc_emb: np.ndarray) -> dict[str, dict[str, list[str]]]:
     """Rank `table`'s garments (index = accession, rows aligned with `emb`) for every query, three ways.
@@ -171,12 +184,15 @@ def rank_queries(queries: list[dict], parses: dict, table: pd.DataFrame, attrs: 
     hi = table["date_latest"].astype(float).to_numpy()
     types = table["ca_type"].to_numpy()
 
-    out = {"bm25": {}, "clip": {}, "hybrid": {}}
+    out = {"bm25": {}, "clip": {}, "fusion": {}, "hybrid": {}}
     for i, q in enumerate(queries):
         s = bm25.score(tokens(q["text"]))
-        out["bm25"][q["id"]] = [str(accs[j]) for j in np.argsort(-s, kind="stable")[:TOP] if s[j] > 0]
+        bm25_order = [j for j in np.argsort(-s, kind="stable") if s[j] > 0]
+        out["bm25"][q["id"]] = [str(accs[j]) for j in bm25_order[:TOP]]
         sim = emb @ q_emb[i]
-        out["clip"][q["id"]] = [str(accs[j]) for j in np.argsort(-sim, kind="stable")[:TOP]]
+        clip_order = np.argsort(-sim, kind="stable")
+        out["clip"][q["id"]] = [str(accs[j]) for j in clip_order[:TOP]]
+        out["fusion"][q["id"]] = [str(accs[j]) for j in rrf([bm25_order, clip_order])[:TOP]]
 
         p = parses[q["id"]]
         score = emb @ desc_emb[i]

@@ -111,7 +111,7 @@ def main() -> None:
     ap.add_argument("--task", choices=["recsys", "search"], default="recsys",
                     help="search: judge text queries from search_pool.json into search_judgments.json")
     ap.add_argument("--rejudge", action="store_true",
-                    help="blind re-grade of data/judgments/rejudge_set.json into rejudgments.json; earlier grades hidden")
+                    help="blind re-grade of [search_]rejudge_set.json into [search_]rejudgments.json; earlier grades hidden")
     ap.add_argument("--depth", type=int, default=5,
                     help="only show candidates in some system's top N (the site shows 4); 0 shows the whole pool")
     args = ap.parse_args()
@@ -131,11 +131,13 @@ def main() -> None:
     else:
         pool = json.loads(POOL.read_text())
     if args.rejudge:
-        OUT = ROOT / "data/judgments/rejudgments.json"
-        pairs = json.loads(REJUDGE_SET.read_text())["pairs"]  # already shuffled
+        prefix = "search_" if args.task == "search" else ""
+        OUT = ROOT / f"data/judgments/{prefix}rejudgments.json"
+        pairs = json.loads((ROOT / f"data/judgments/{prefix}rejudge_set.json").read_text())["pairs"]  # shuffled
+        full = pool
         pool = {}
         for q, x in pairs:
-            pool.setdefault(q, {"candidates": []})["candidates"].append(x)
+            pool.setdefault(q, {"candidates": [], "text": full.get(q, {}).get("text", "")})["candidates"].append(x)
         args.depth = 0
     if args.depth:
         # Grades already given beyond this depth stay in judgments.json; they just aren't asked for.

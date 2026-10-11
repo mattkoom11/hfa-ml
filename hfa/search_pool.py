@@ -16,7 +16,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data/judgments/search_pool.json"
-SYSTEMS = ("bm25", "clip", "hybrid")
+SYSTEMS = ("bm25", "clip", "fusion", "hybrid")
 
 
 def main() -> None:

@@ -20,7 +20,7 @@ import yaml
 from hfa.rec_eval import boot_ci, per_query
 
 ROOT = Path(__file__).resolve().parent.parent
-SYSTEMS = ("bm25", "clip", "hybrid")
+SYSTEMS = ("bm25", "clip", "fusion", "hybrid")
 SEED = 20261014
 
 
