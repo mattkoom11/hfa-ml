@@ -5,3 +5,5 @@ pyarrow>=17
 pyyaml>=6
 scikit-learn>=1.5
 pytest>=8
+fastapi>=0.110
+httpx>=0.27

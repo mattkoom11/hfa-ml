@@ -1,0 +1,9 @@
+# The live search service (hfa.serve) on a CPU-only server.
+# Install torch AND torchvision from the CPU index first, or open_clip pulls a mismatched torchvision:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+numpy>=2
+pandas>=2.2
+pyyaml>=6
+open_clip_torch>=3
+fastapi>=0.110
+uvicorn>=0.30

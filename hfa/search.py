@@ -153,6 +153,24 @@ def clip_text(texts: list[str]) -> np.ndarray:
     return torch.nn.functional.normalize(e, dim=-1).cpu().numpy()
 
 
+def build_bm25(table: pd.DataFrame, attrs: dict) -> BM25:
+    """Keyword index over title, description, type label, date text and Phase 1 attributes.
+
+    Shared by the benchmark (rank_queries) and the live service (hfa.serve), so they can't drift.
+    """
+    def text(v) -> str:
+        # pandas NaN is truthy, so `v or ""` would index the word "nan" for every missing description
+        return "" if v is None or (isinstance(v, float) and np.isnan(v)) else str(v)
+
+    docs = []
+    for a in table.index:
+        row = table.loc[a]
+        words = " ".join(sorted(attrs[a]["material"] | attrs[a]["color"] | attrs[a]["technique"]))
+        docs.append(tokens(" ".join(text(v) for v in (row["title"], row["description"],
+                                                    TYPE_LABELS.get(row["ca_type"], ""), row["date_raw"], words))))
+    return BM25(docs)
+
+
 RRF_K = 60  # the usual constant; damps the advantage of rank 1 over rank 2
 
 
@@ -173,13 +191,7 @@ def rank_queries(queries: list[dict], parses: dict, table: pd.DataFrame, attrs: 
     attrs: {accession: {"material": set, "color": set, "technique": set}}; parses: {query_id: guarded parse}.
     """
     accs = np.array(table.index)
-    docs = []
-    for a in accs:
-        row = table.loc[a]
-        words = " ".join(sorted(attrs[a]["material"] | attrs[a]["color"] | attrs[a]["technique"]))
-        docs.append(tokens(" ".join(str(v or "") for v in (row["title"], row["description"],
-                                                         TYPE_LABELS.get(row["ca_type"], ""), row["date_raw"], words))))
-    bm25 = BM25(docs)
+    bm25 = build_bm25(table, attrs)
     lo = table["date_earliest"].astype(float).to_numpy()
     hi = table["date_latest"].astype(float).to_numpy()
     types = table["ca_type"].to_numpy()
