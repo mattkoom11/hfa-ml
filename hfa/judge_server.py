@@ -108,6 +108,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8766)
     ap.add_argument("--judge", default="matthew")
+    ap.add_argument("--task", choices=["recsys", "search"], default="recsys",
+                    help="search: judge text queries from search_pool.json into search_judgments.json")
     ap.add_argument("--rejudge", action="store_true",
                     help="blind re-grade of data/judgments/rejudge_set.json into rejudgments.json; earlier grades hidden")
     ap.add_argument("--depth", type=int, default=5,
@@ -116,9 +118,19 @@ def main() -> None:
     if not POOL.exists():
         raise SystemExit("no pool yet; run: .venv/bin/python -m hfa.judge_sample")
 
-    pool = json.loads(POOL.read_text())
+    global OUT
+    rubric = None
+    if args.task == "search":
+        OUT = ROOT / "data/judgments/search_judgments.json"
+        pool = json.loads((ROOT / "data/judgments/search_pool.json").read_text())
+        args.depth = 0
+        rubric = ["2 · Strongly matches: clearly what the search asked for.",
+                  "1 · Partly matches: gets some of the search right (e.g. the right object but wrong color or period).",
+                  "0 · Doesn't match the search.",
+                  "Judge against the words of the search, not whether the garment is interesting."]
+    else:
+        pool = json.loads(POOL.read_text())
     if args.rejudge:
-        global OUT
         OUT = ROOT / "data/judgments/rejudgments.json"
         pairs = json.loads(REJUDGE_SET.read_text())["pairs"]  # already shuffled
         pool = {}
@@ -136,10 +148,14 @@ def main() -> None:
             e["candidates"] = [x for x in e["candidates"] if x in keep]
     g = pd.read_parquet(ROOT / "data/processed/garments.parquet").set_index("accession")
     g = g.astype(object).where(g.notna(), None)
-    needed = set(pool) | {x for e in pool.values() for x in e["candidates"]}
+    needed = {x for e in pool.values() for x in e["candidates"]} | (set() if args.task == "search" else set(pool))
+    cards = {a: garment_card(a, g) for a in needed}
+    if args.task == "search":
+        for q, e in pool.items():  # the "query card" is the search text itself
+            cards[q] = {"accession": q, "title": "", "type": "search", "date": "", "description": e["text"], "photos": []}
     Handler.payload = {
         "queries": [{"query": q, "candidates": e["candidates"]} for q, e in pool.items()],
-        "cards": {a: garment_card(a, g) for a in needed},
+        "cards": cards, "rubric": rubric, "task": args.task,
     }
     Handler.valid = {q: set(e["candidates"]) for q, e in pool.items()}
     judged = load_judgments()

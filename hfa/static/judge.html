@@ -115,7 +115,7 @@ function el(tag, cls, text) {
 function renderCard(target, card) {
   target.replaceChildren();
   const photos = el("div", "photos" + (card.photos.length ? "" : " empty"));
-  if (!card.photos.length) photos.textContent = "No photo available";
+  if (!card.photos.length) photos.textContent = card.type === "search" ? "" : "No photo available";
   for (const src of card.photos) {
     const img = el("img"); img.src = src; img.loading = "lazy"; img.alt = card.title || card.accession;
     img.onclick = () => zoom(src);
@@ -183,6 +183,12 @@ $("jump").onclick = nextUngraded;
 
 fetch("/api/state").then((r) => r.json()).then((d) => {
   state = d;
+  if (d.rubric) {  // search task: its own rubric, and the query card shows the search text
+    const ul = document.querySelector("#rubric ul"); ul.replaceChildren(...d.rubric.map((t) => el("li", "", t)));
+    document.querySelector("#rubric summary").textContent = "Rubric: does the right garment match the search on the left?";
+    document.querySelector(".grade[data-g='2'] span").textContent = "clearly what was asked";
+    document.querySelector(".grade[data-g='1'] span").textContent = "partly matches";
+  }
   state.queries.forEach((q, qi) => q.candidates.forEach((c, ci) => pairs.push([q.query, c, qi, ci, q.candidates.length])));
   const first = pairs.findIndex(([q, c]) => !grade(q, c));
   show(first >= 0 ? first : 0);

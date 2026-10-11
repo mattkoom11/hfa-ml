@@ -1,0 +1,1064 @@
+{
+ "q01": {
+  "text": "black silk dress",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "dr",
+   "materials": [
+    "silk"
+   ],
+   "colors": [
+    "black"
+   ],
+   "techniques": [],
+   "description": "black silk dress"
+  },
+  "qrels": {
+   "DR.2023.9": 2,
+   "DR.2025.217": 1,
+   "DR.2023.799": 2,
+   "DR.2023.549": 2,
+   "DR.2023.123": 2,
+   "DR.2023.192": 2,
+   "DR.2023.91": 2,
+   "DR.2023.317": 2,
+   "DR.2023.120": 2,
+   "DR.2023.111": 1
+  }
+ },
+ "q02": {
+  "text": "white cotton blouse",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "sh",
+   "materials": [
+    "cotton"
+   ],
+   "colors": [
+    "white"
+   ],
+   "techniques": [],
+   "description": "white cotton blouse"
+  },
+  "qrels": {
+   "SH.2021.5": 1,
+   "SH.2024.416": 2,
+   "SH.2021.30": 1,
+   "SH.2021.31": 2,
+   "SH.2023.950": 2,
+   "SH.2022.147": 2,
+   "SH.2026.24": 1,
+   "SH.2023.951": 2,
+   "SH.2025.138": 2,
+   "SH.2021.29": 1
+  }
+ },
+ "q03": {
+  "text": "red velvet",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": null,
+   "materials": [
+    "velvet"
+   ],
+   "colors": [
+    "red"
+   ],
+   "techniques": [],
+   "description": "red velvet"
+  },
+  "qrels": {
+   "OTW.2023.614": 2,
+   "ACS.2024.292": 1,
+   "ACS.2024.444": 2,
+   "OTW.2023.676": 2,
+   "OTW.2023.677": 2,
+   "ACS.2025.183": 2,
+   "ACS.2024.310": 1,
+   "DR.2023.542": 2,
+   "ACS.2026.70": 2,
+   "OTW.2023.74": 2,
+   "ACS.2024.252": 2,
+   "ACS.2025.927": 2
+  }
+ },
+ "q04": {
+  "text": "gold metal jewelry",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "jwl",
+   "materials": [
+    "metal"
+   ],
+   "colors": [
+    "gold"
+   ],
+   "techniques": [],
+   "description": "gold metal jewelry"
+  },
+  "qrels": {
+   "JWL.2024.219": 2,
+   "JWL.2024.240": 2,
+   "JWL.2024.228": 2,
+   "JWL.2024.229": 2,
+   "JWL.2024.235": 1,
+   "JWL.2024.234": 2,
+   "JWL.2025.83": 2,
+   "JWL.2024.230": 2
+  }
+ },
+ "q05": {
+  "text": "brown leather shoes",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [
+    "leather"
+   ],
+   "colors": [
+    "brown"
+   ],
+   "techniques": [],
+   "description": "brown leather shoes"
+  },
+  "qrels": {
+   "ACS.2024.115": 2,
+   "ACS.2023.932": 2,
+   "ACS.2025.189": 1,
+   "ACS.2023.957": 2,
+   "ACS.2024.50": 2,
+   "ACS.2023.990": 2,
+   "ACS.2024.138": 1,
+   "ACS.2023.929": 2
+  }
+ },
+ "q06": {
+  "text": "navy wool suit",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "st",
+   "materials": [
+    "wool"
+   ],
+   "colors": [
+    "navy"
+   ],
+   "techniques": [],
+   "description": "navy wool suit"
+  },
+  "qrels": {
+   "ST.2021.39": 2,
+   "OTW.2025.838": 1,
+   "ST.2022.129": 2,
+   "JKT.2021.46": 1,
+   "ENS.2023.597": 2,
+   "ST.2025.904": 1,
+   "ST.2022.126": 2,
+   "ST.2025.401": 1,
+   "ST.2025.402": 2
+  }
+ },
+ "q07": {
+  "text": "green satin",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": null,
+   "materials": [
+    "satin"
+   ],
+   "colors": [
+    "green"
+   ],
+   "techniques": [],
+   "description": "green satin"
+  },
+  "qrels": {
+   "BD.2025.913": 2,
+   "DR.2023.701": 2,
+   "DR.2023.382": 2,
+   "DR.2023.147": 1,
+   "OTW.2023.679": 2,
+   "ACS.2024.253": 2,
+   "JKT.2021.36": 2,
+   "ACS.2024.22": 1,
+   "ENS.2023.568": 1,
+   "JWL.2024.233": 0
+  }
+ },
+ "q08": {
+  "text": "pink chiffon dress",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "dr",
+   "materials": [
+    "chiffon"
+   ],
+   "colors": [
+    "pink"
+   ],
+   "techniques": [],
+   "description": "pink chiffon dress"
+  },
+  "qrels": {
+   "JKT.2023.209": 1,
+   "DR.2023.386": 1,
+   "DR.2023.462": 1,
+   "ENS.2023.169": 1,
+   "ENS.2023.168": 1,
+   "DR.2023.413": 1,
+   "DR.2023.550": 2,
+   "SH.2023.949": 2,
+   "DR.2025.228": 1,
+   "DR.2023.181": 2
+  }
+ },
+ "q09": {
+  "text": "black felt hat",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [
+    "felt"
+   ],
+   "colors": [
+    "black"
+   ],
+   "techniques": [],
+   "description": "black felt hat"
+  },
+  "qrels": {
+   "ACS.2024.306": 2,
+   "ACS.2025.3": 2,
+   "ACS.2024.441": 2,
+   "ACS.2024.319": 2,
+   "ACS.2024.439": 2,
+   "ACS.2024.314": 2,
+   "ACS.2024.299": 2,
+   "ACS.2026.10": 2,
+   "ACS.2024.324": 2,
+   "ACS.2024.320": 2,
+   "ACS.2024.300": 2
+  }
+ },
+ "q10": {
+  "text": "printed cotton dress",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "dr",
+   "materials": [
+    "cotton"
+   ],
+   "colors": [],
+   "techniques": [
+    "printing"
+   ],
+   "description": "printed cotton dress"
+  },
+  "qrels": {
+   "DR.2023.448": 2,
+   "DR.2023.574": 2,
+   "DR.2023.206": 2,
+   "DR.2023.449": 2,
+   "DR.2023.561": 2,
+   "DR.2022.61": 2,
+   "DR.2022.60": 2,
+   "DR.2022.71": 2,
+   "DR.2022.63": 2,
+   "DR.2022.74": 2,
+   "DR.2022.69": 2
+  }
+ },
+ "q11": {
+  "text": "1920s dress",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1920,
+   "decade_to": 1929,
+   "ca_type": "dr",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "1920s dress"
+  },
+  "qrels": {
+   "DR.2025.228": 2,
+   "DR.2023.490": 1,
+   "DR.2024.49": 1,
+   "DR.2023.108": 2,
+   "DR.2023.88": 2,
+   "DR.2023.185": 1,
+   "DR.2023.102": 1,
+   "DR.2023.27": 1,
+   "DR.2023.112": 2,
+   "DR.2023.665": 1,
+   "DR.2023.668": 1
+  }
+ },
+ "q12": {
+  "text": "1950s hat",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1950,
+   "decade_to": 1959,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "1950s hat"
+  },
+  "qrels": {
+   "ACS.2024.289": 2,
+   "ACS.2024.17": 2,
+   "ACS.2024.252": 2,
+   "ACS.2025.7": 2,
+   "ACS.2024.321": 2,
+   "ACS.2024.315": 2,
+   "ACS.2024.273": 2,
+   "ACS.2024.303": 1,
+   "ACS.2026.71": 1,
+   "ACS.2024.316": 2,
+   "ACS.2025.6": 2,
+   "ACS.2024.311": 1
+  }
+ },
+ "q13": {
+  "text": "Victorian bodice",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1837,
+   "decade_to": 1901,
+   "ca_type": "bd",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "Victorian bodice"
+  },
+  "qrels": {
+   "BD.2025.913": 2,
+   "BD.2022.146": 2,
+   "DR.2023.513": 1,
+   "BD.2022.137": 2,
+   "SH.2022.143": 1,
+   "BD.2023.31": 2,
+   "ACS.2025.86": 1,
+   "BD.2025.912": 2,
+   "WENS.2025.916": 1
+  }
+ },
+ "q14": {
+  "text": "1940s women's jacket",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1940,
+   "decade_to": 1949,
+   "ca_type": "jkt",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "1940s women's jacket"
+  },
+  "qrels": {
+   "JKT.2023.571": 2,
+   "JKT.2021.42": 0,
+   "JKT.2023.576": 2,
+   "JKT.2023.699": 1,
+   "ACS.2024.280": 0,
+   "JKT.2023.412": 2,
+   "JKT.2024.40": 2,
+   "JKT.2023.578": 2,
+   "JKT.2024.82": 2,
+   "ST.2023.162": 1,
+   "JKT.2023.647": 1
+  }
+ },
+ "q15": {
+  "text": "1890s skirt",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1890,
+   "decade_to": 1899,
+   "ca_type": "sk",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "1890s skirt"
+  },
+  "qrels": {
+   "SK.2022.77": 1,
+   "SK.2025.813": 1,
+   "SK.2025.678": 2,
+   "DR.2023.513": 0,
+   "SK.2024.404": 1,
+   "UND.2024.422": 0,
+   "SK.2023.260": 1,
+   "SK.2025.132": 1,
+   "SK.2023.21": 2,
+   "UND.2024.393": 0,
+   "UND.2025.878": 1,
+   "SK.2025.214": 1,
+   "SK.2025.812": 2,
+   "SK.2022.200": 2
+  }
+ },
+ "q16": {
+  "text": "1960s shift dress",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1960,
+   "decade_to": 1969,
+   "ca_type": "dr",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "1960s shift dress"
+  },
+  "qrels": {
+   "DR.2023.665": 1,
+   "DR.2023.369": 2,
+   "DR.2023.450": 2,
+   "ENS.2026.19": 0,
+   "DR.2023.490": 1,
+   "DR.2023.185": 1,
+   "DR.2023.668": 0,
+   "DR.2022.69": 1,
+   "ENS.2023.552": 1,
+   "DR.2023.108": 1,
+   "DR.2023.455": 2,
+   "DR.2022.187": 2,
+   "DR.2022.192": 2
+  }
+ },
+ "q17": {
+  "text": "early 1900s white dress",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1900,
+   "decade_to": 1915,
+   "ca_type": "dr",
+   "materials": [],
+   "colors": [
+    "white"
+   ],
+   "techniques": [],
+   "description": "early 1900s white dress"
+  },
+  "qrels": {
+   "DR.2024.83": 2,
+   "DR.2025.843": 2,
+   "DR.2025.232": 2,
+   "DR.2023.456": 1,
+   "PJ.2025.141": 0,
+   "DR.2025.798": 2,
+   "CDR.2025.922": 1,
+   "DR.2022.140": 2,
+   "DR.2023.9": 1,
+   "DR.2025.844": 2
+  }
+ },
+ "q18": {
+  "text": "1930s evening gown",
+  "kind": "era",
+  "parse": {
+   "decade_from": 1930,
+   "decade_to": 1939,
+   "ca_type": "dr",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "1930s evening gown"
+  },
+  "qrels": {
+   "DR.2022.135": 1,
+   "DR.2023.471": 1,
+   "DR.2023.801": 1,
+   "DR.2023.76": 1,
+   "DR.2022.168": 1,
+   "DR.2023.79": 2,
+   "UND.2025.68": 1,
+   "DR.2023.461": 2,
+   "DR.2025.591": 2,
+   "DR.2022.153": 2
+  }
+ },
+ "q19": {
+  "text": "dress with puff sleeves",
+  "kind": "detail",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "dr",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "dress with puff sleeves"
+  },
+  "qrels": {
+   "RB.2023.12": 2,
+   "PJ.2025.141": 0,
+   "DR.2023.439": 1,
+   "PJ.2024.398": 1,
+   "DR.2023.76": 2,
+   "DR.2023.586": 1,
+   "OTW.2023.655": 0,
+   "RB.2023.473": 1,
+   "DR.2023.174": 2,
+   "DR.2023.442": 1,
+   "DR.2024.103": 1,
+   "DR.2023.520": 1,
+   "DR.2023.317": 1
+  }
+ },
+ "q20": {
+  "text": "lace collar",
+  "kind": "detail",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "lace collar"
+  },
+  "qrels": {
+   "JKT.2023.54": 2,
+   "ACS.2024.23": 2,
+   "ACS.2024.187": 2,
+   "ACS.2025.55": 1,
+   "ACS.2025.51": 2,
+   "DR.2022.108": 2,
+   "ACS.2024.160": 2,
+   "ACS.2023.942": 2
+  }
+ },
+ "q21": {
+  "text": "garment with fringe",
+  "kind": "detail",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": null,
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "garment with fringe"
+  },
+  "qrels": {
+   "ACS.2025.80": 1,
+   "ACS.2023.954": 2,
+   "SH.2024.416": 1,
+   "ACS.2023.952": 2,
+   "RB.2023.50": 2,
+   "ACS.2023.944": 2,
+   "OTW.2023.727": 2,
+   "ACS.2026.35": 2,
+   "OTW.2023.725": 2
+  }
+ },
+ "q22": {
+  "text": "embroidered shawl",
+  "kind": "detail",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [
+    "embroidery"
+   ],
+   "description": "embroidered shawl"
+  },
+  "qrels": {
+   "ACS.2023.986": 1,
+   "ACS.2023.954": 2,
+   "ACS.2025.75": 2,
+   "DR.2023.454": 1,
+   "ACS.2023.744": 2,
+   "DR.2023.581": 1,
+   "ACS.2025.460": 2,
+   "TEX.2023.821": 1,
+   "ACS.2023.745": 2,
+   "ACS.2024.136": 2
+  }
+ },
+ "q23": {
+  "text": "pleated skirt",
+  "kind": "detail",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "sk",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "pleated skirt"
+  },
+  "qrels": {
+   "OTW.2023.438": 0,
+   "SK.2025.214": 1,
+   "ENS.2023.383": 2,
+   "SK.2025.914": 1,
+   "SK.2023.260": 1,
+   "OTW.2023.729": 1,
+   "DR.2023.513": 1,
+   "SK.2024.404": 2,
+   "SK.2025.587": 1,
+   "DR.2023.537": 0,
+   "ENS.2022.136": 1,
+   "SK.2025.813": 2
+  }
+ },
+ "q24": {
+  "text": "sailor collar",
+  "kind": "detail",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": null,
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "sailor collar"
+  },
+  "qrels": {
+   "SH.2024.60": 2,
+   "DR.2023.317": 2,
+   "SH.2022.147": 2,
+   "SH.2022.143": 2,
+   "ACS.2025.276": 0,
+   "ACS.2024.301": 1,
+   "ACS.2024.23": 1,
+   "ACS.2024.315": 0,
+   "ACS.2024.160": 1,
+   "SH.2022.110": 2
+  }
+ },
+ "q25": {
+  "text": "lace-up boots",
+  "kind": "detail",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "lace-up boots"
+  },
+  "qrels": {
+   "ACS.2023.988": 2,
+   "ACS.2025.462": 2,
+   "ACS.2023.991": 2,
+   "ACS.2024.169": 2,
+   "CACS.2024.5": 2,
+   "ACS.2023.989": 2,
+   "ACS.2023.990": 2
+  }
+ },
+ "q26": {
+  "text": "beaded purse",
+  "kind": "attribute",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "beaded purse"
+  },
+  "qrels": {
+   "ACS.2023.971": 2,
+   "ACS.2024.95": 2,
+   "ACS.2024.196": 2,
+   "ACS.2024.202": 2,
+   "ACS.2023.967": 2,
+   "ACS.2024.182": 2,
+   "ACS.2023.975": 2,
+   "ACS.2023.977": 2
+  }
+ },
+ "q27": {
+  "text": "hand fan",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "hand fan"
+  },
+  "qrels": {
+   "ACS.2024.112": 2,
+   "ACS.2025.117": 0,
+   "ACS.2024.114": 2,
+   "ACS.2024.109": 2,
+   "ACS.2023.972": 0,
+   "ACS.2024.111": 2,
+   "ACS.2023.944": 0,
+   "ACS.2025.169": 0,
+   "ACS.2025.110": 0,
+   "ACS.2024.110": 2
+  }
+ },
+ "q28": {
+  "text": "small drawstring bag",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "small drawstring bag"
+  },
+  "qrels": {
+   "ACS.2024.167": 2,
+   "ACS.2025.81": 2,
+   "ACS.2023.927": 2,
+   "ACS.2024.340": 2,
+   "TEX.2023.819": 0,
+   "ACS.2024.341": 2,
+   "ACS.2024.47": 2,
+   "ACS.2023.973": 2,
+   "ACS.2024.345": 2,
+   "ACS.2023.961": 0
+  }
+ },
+ "q29": {
+  "text": "bow tie",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "bow tie"
+  },
+  "qrels": {
+   "ACS.2024.144": 2,
+   "ACS.2024.284": 2,
+   "ACS.2023.843": 2,
+   "ACS.2024.131": 2,
+   "ACS.2023.844": 2,
+   "ACS.2024.302": 2,
+   "ACS.2024.145": 2,
+   "ACS.2024.143": 2
+  }
+ },
+ "q30": {
+  "text": "straw hat with flowers",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "pink and white floral decorated straw hat"
+  },
+  "qrels": {
+   "ACS.2024.292": 1,
+   "ACS.2024.268": 1,
+   "ACS.2025.10": 1,
+   "ACS.2024.362": 2,
+   "ACS.2025.259": 1,
+   "ACS.2024.379": 1,
+   "ACS.2025.925": 1,
+   "ACS.2025.244": 2,
+   "ACS.2024.17": 1,
+   "ACS.2024.303": 2,
+   "ACS.2026.8": 2,
+   "ACS.2026.62": 2,
+   "ACS.2024.259": 2
+  }
+ },
+ "q31": {
+  "text": "floral print dress",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "dr",
+   "materials": [],
+   "colors": [],
+   "techniques": [
+    "printing"
+   ],
+   "description": "floral print dress"
+  },
+  "qrels": {
+   "DR.2022.74": 2,
+   "TEX.2024.192": 1,
+   "DR.2023.524": 2,
+   "DR.2022.55": 2,
+   "DR.2022.71": 2,
+   "DR.2023.516": 2,
+   "DR.2023.567": 2,
+   "DR.2023.451": 2,
+   "DR.2023.399": 2,
+   "DR.2022.61": 2
+  }
+ },
+ "q32": {
+  "text": "sparkly evening bag",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "sparkly evening bag"
+  },
+  "qrels": {
+   "JKT.2021.42": 0,
+   "TEX.2023.819": 0,
+   "ACS.2024.116": 2,
+   "ACS.2024.343": 2,
+   "ACS.2023.980": 2,
+   "ACS.2023.961": 0,
+   "ACS.2024.210": 2,
+   "ACS.2024.117": 2
+  }
+ },
+ "q33": {
+  "text": "wide-brimmed hat",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "wide-brimmed hat"
+  },
+  "qrels": {
+   "ACS.2024.366": 2,
+   "ACS.2026.9": 2,
+   "ACS.2025.289": 2,
+   "ACS.2024.440": 2,
+   "ACS.2026.10": 2,
+   "ACS.2024.307": 2,
+   "ACS.2024.435": 2,
+   "ACS.2024.263": 1,
+   "ACS.2025.278": 2,
+   "ACS.2024.363": 2
+  }
+ },
+ "q34": {
+  "text": "men's overcoat",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "otw",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "men's overcoat"
+  },
+  "qrels": {
+   "JKT.2025.911": 2,
+   "JKT.2021.45": 2,
+   "ST.2023.162": 2,
+   "OTW.2023.910": 2,
+   "OTW.2021.1": 2,
+   "OTW.2023.907": 2,
+   "PJ.2021.19": 0,
+   "OTW.2023.596": 2,
+   "OTW.2022.98": 1,
+   "JKT.2021.42": 2,
+   "ACS.2024.280": 0,
+   "OTW.2023.905": 2
+  }
+ },
+ "q35": {
+  "text": "colorful plaid",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": null,
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "colorful plaid"
+  },
+  "qrels": {
+   "DR.2023.450": 2,
+   "ENS.2023.563": 0,
+   "ENS.2023.746": 2,
+   "ACS.2024.171": 2,
+   "DR.2023.423": 2,
+   "ACS.2023.838": 2,
+   "ACS.2024.172": 2,
+   "SH.2023.463": 2,
+   "ACS.2026.53": 2,
+   "OTW.2023.910": 2
+  }
+ },
+ "q36": {
+  "text": "elegant long gloves",
+  "kind": "visual",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": "acs",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "elegant long gloves"
+  },
+  "qrels": {
+   "ACS.2023.962": 2,
+   "ACS.2023.961": 1,
+   "ACS.2024.122": 2,
+   "ACS.2023.956": 0,
+   "ACS.2023.953": 2,
+   "ACS.2023.963": 2,
+   "ACS.2025.89": 2,
+   "ACS.2025.54": 0
+  }
+ },
+ "q37": {
+  "text": "children's clothing",
+  "kind": "vague",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": null,
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "children's clothing"
+  },
+  "qrels": {
+   "ACS.2024.202": 0,
+   "ACS.2025.171": 0,
+   "ST.2023.162": 0,
+   "CDR.2025.922": 2,
+   "ACS.2024.436": 1,
+   "CSH.2025.918": 2,
+   "CSH.2025.920": 2,
+   "ACS.2024.280": 1,
+   "CSH.2025.921": 2,
+   "BD.2025.913": 0
+  }
+ },
+ "q38": {
+  "text": "something a woman would wear to a 1920s party",
+  "kind": "vague",
+  "parse": {
+   "decade_from": 1920,
+   "decade_to": 1929,
+   "ca_type": null,
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "1920s party outfit for a woman"
+  },
+  "qrels": {
+   "ENS.2023.169": 2,
+   "SH.2021.5": 0,
+   "CACS.2024.10": 0,
+   "DR.2024.49": 1,
+   "DR.2023.88": 2,
+   "SH.2023.463": 0,
+   "ENS.2024.85": 2,
+   "SH.2021.18": 1,
+   "ACS.2024.206": 2,
+   "DR.2023.486": 2,
+   "DR.2024.215": 2,
+   "DR.2023.91": 2,
+   "DR.2023.94": 2
+  }
+ },
+ "q39": {
+  "text": "an outfit for a summer day in the 1950s",
+  "kind": "vague",
+  "parse": {
+   "decade_from": 1950,
+   "decade_to": 1959,
+   "ca_type": "end",
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "summer outfit for the 1950s"
+  },
+  "qrels": {
+   "ENS.2022.88": 2,
+   "ENS.2023.497": 2,
+   "DR.2023.121": 1,
+   "DR.2023.501": 2,
+   "ENS.2023.562": 2,
+   "DR.2023.450": 2,
+   "SH.2022.143": 0,
+   "SH.2021.16": 1,
+   "ENS.2023.35": 2,
+   "DR.2023.455": 2,
+   "ENS.2026.29": 0,
+   "SH.2021.29": 1,
+   "ENS.2023.466": 2
+  }
+ },
+ "q40": {
+  "text": "something warm for winter",
+  "kind": "vague",
+  "parse": {
+   "decade_from": null,
+   "decade_to": null,
+   "ca_type": null,
+   "materials": [],
+   "colors": [],
+   "techniques": [],
+   "description": "warm winter outerwear"
+  },
+  "qrels": {
+   "OTW.2023.926": 2,
+   "OTW.2025.279": 2,
+   "ACS.2024.169": 0,
+   "OTW.2023.905": 2,
+   "OTW.2025.200": 2,
+   "OTW.2025.97": 2,
+   "OTW.2023.612": 2,
+   "SH.2021.30": 1,
+   "OTW.2023.629": 2,
+   "OTW.2023.596": 2,
+   "ACS.2024.436": 2,
+   "CACS.2024.7": 0,
+   "SH.2021.29": 0,
+   "OTW.2025.282": 2,
+   "SH.2021.4": 0
+  }
+ }
+}

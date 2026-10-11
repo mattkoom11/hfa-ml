@@ -1,0 +1,7 @@
+# What GitHub Actions needs: no torch, no model downloads, no LLM.
+numpy>=2
+pandas>=2.2
+pyarrow>=17
+pyyaml>=6
+scikit-learn>=1.5
+pytest>=8

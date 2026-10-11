@@ -1,0 +1,44 @@
+# Phase 5 search benchmark: plain-English queries a visitor might type.
+# Drafted 2026-10-11 from the photographed catalog; Matthew edits before judging.
+# kind: attribute = exact materials/colors/types; era = period + type;
+#       visual = how it looks; detail = a feature named in descriptions; vague = visitor intent
+- {id: q01, kind: attribute, text: "black silk dress"}
+- {id: q02, kind: attribute, text: "white cotton blouse"}
+- {id: q03, kind: attribute, text: "red velvet"}
+- {id: q04, kind: attribute, text: "gold metal jewelry"}
+- {id: q05, kind: attribute, text: "brown leather shoes"}
+- {id: q06, kind: attribute, text: "navy wool suit"}
+- {id: q07, kind: attribute, text: "green satin"}
+- {id: q08, kind: attribute, text: "pink chiffon dress"}
+- {id: q09, kind: attribute, text: "black felt hat"}
+- {id: q10, kind: attribute, text: "printed cotton dress"}
+- {id: q11, kind: era, text: "1920s dress"}
+- {id: q12, kind: era, text: "1950s hat"}
+- {id: q13, kind: era, text: "Victorian bodice"}
+- {id: q14, kind: era, text: "1940s women's jacket"}
+- {id: q15, kind: era, text: "1890s skirt"}
+- {id: q16, kind: era, text: "1960s shift dress"}
+- {id: q17, kind: era, text: "early 1900s white dress"}
+- {id: q18, kind: era, text: "1930s evening gown"}
+- {id: q19, kind: detail, text: "dress with puff sleeves"}
+- {id: q20, kind: detail, text: "lace collar"}
+- {id: q21, kind: detail, text: "garment with fringe"}
+- {id: q22, kind: detail, text: "embroidered shawl"}
+- {id: q23, kind: detail, text: "pleated skirt"}
+- {id: q24, kind: detail, text: "sailor collar"}
+- {id: q25, kind: detail, text: "lace-up boots"}
+- {id: q26, kind: attribute, text: "beaded purse"}
+- {id: q27, kind: visual, text: "hand fan"}
+- {id: q28, kind: visual, text: "small drawstring bag"}
+- {id: q29, kind: visual, text: "bow tie"}
+- {id: q30, kind: visual, text: "straw hat with flowers"}
+- {id: q31, kind: visual, text: "floral print dress"}
+- {id: q32, kind: visual, text: "sparkly evening bag"}
+- {id: q33, kind: visual, text: "wide-brimmed hat"}
+- {id: q34, kind: visual, text: "men's overcoat"}
+- {id: q35, kind: visual, text: "colorful plaid"}
+- {id: q36, kind: visual, text: "elegant long gloves"}
+- {id: q37, kind: vague, text: "children's clothing"}
+- {id: q38, kind: vague, text: "something a woman would wear to a 1920s party"}
+- {id: q39, kind: vague, text: "an outfit for a summer day in the 1950s"}
+- {id: q40, kind: vague, text: "something warm for winter"}

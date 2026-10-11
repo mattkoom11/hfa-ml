@@ -1,0 +1,442 @@
+{
+ "q01": {
+  "query": "black silk dress",
+  "retrieved": [
+   "DR.2023.317",
+   "DR.2025.217",
+   "DR.2023.123",
+   "DR.2023.120",
+   "DR.2023.799"
+  ],
+  "answer": "The collection includes several black silk dresses from the early 20th century. One example is a black silk chiffon dress with batwing style sleeves [DR.2023.120]. Another is a black silk crepe de chine dress with a pleated ruffle on the hem and a slip creating a layered look [DR.2023.123]. There is also a black silk dress with a center front lace inset and small buttons, featuring lace ruffles on the cuffs [DR.2023.799]."
+ },
+ "q02": {
+  "query": "white cotton blouse",
+  "retrieved": [
+   "SH.2021.5",
+   "SH.2021.29",
+   "SH.2023.951",
+   "SH.2022.147",
+   "SH.2021.30"
+  ],
+  "answer": "The collection includes a white cotton blouse with pin tucks down the center front and small white glass buttons [SH.2023.951]. Another white cotton blouse features a sailor style collar with a tatted lace edge around the collar, sleeve hems, and neckline [SH.2022.147]. Both blouses are from the early 20th century."
+ },
+ "q03": {
+  "query": "red velvet",
+  "retrieved": [
+   "ACS.2024.444",
+   "ACS.2026.70",
+   "ACS.2025.927",
+   "ACS.2024.252",
+   "ACS.2024.310"
+  ],
+  "answer": "There is one red velvet hat in the collection, described as a red velvet cap with three gathered circles and a bow at the center back [ACS.2024.444]. Another red velvet hat is mentioned but without a detailed description [ACS.2025.927]. A pink and red hat with velvet detail at the front of the brim is also in the collection [ACS.2024.252]."
+ },
+ "q04": {
+  "query": "gold metal jewelry",
+  "retrieved": [
+   "JWL.2024.228",
+   "JWL.2025.83",
+   "JWL.2024.229",
+   "JWL.2024.234",
+   "JWL.2024.240"
+  ],
+  "answer": "The collection includes gold metal jewelry items such as pins [JWL.2024.228] and [JWL.2024.229], which date from the Early 20th century. There are also cuff links and tie pins [JWL.2025.83] from the Late 19th to Early 20th century. No specific colors or additional features are described in the records."
+ },
+ "q05": {
+  "query": "brown leather shoes",
+  "retrieved": [
+   "ACS.2023.957",
+   "ACS.2023.932",
+   "ACS.2023.929",
+   "ACS.2025.189",
+   "ACS.2024.115"
+  ],
+  "answer": "The collection includes several brown leather shoes from the early 20th century. One pair has a 3” heel and decorative punch work at the toe [ACS.2023.957]. Another pair features a 2” heel with decorative stitching on the toe and back, and a lace-up closure [ACS.2023.932]. A third pair is made of brown suede leather with fringed detail and an open toe [ACS.2023.929]. One pair also has cut-out eyelets for lacing at the lower opening [ACS.2024.115]."
+ },
+ "q06": {
+  "query": "navy wool suit",
+  "retrieved": [
+   "ST.2025.402",
+   "ST.2022.129",
+   "ST.2021.39",
+   "ST.2025.401",
+   "ST.2022.126"
+  ],
+  "answer": "The collection includes a navy wool two-piece riding suit from the Early 20thc [ST.2022.129]. This suit features a long jacket with slanted lower pockets and three buttons down the center front. The pants are long and fitted through the calf with flared shaping at the hem, reinforced patches on the inseam, and elastic stirrups that button."
+ },
+ "q07": {
+  "query": "green satin",
+  "retrieved": [
+   "BD.2025.913",
+   "ACS.2024.22",
+   "DR.2023.382",
+   "JKT.2021.36",
+   "DR.2023.701"
+  ],
+  "answer": "The [DR.2023.382] dress features green dupioni fabric with a tie at the right front waist. The [DR.2023.701] dress is made of green olive fabric with a balloon hem. The [JKT.2021.36] frock coat has dark green wool with silk satin lapels and lining. The [ACS.2024.22] shoes are made of green leather."
+ },
+ "q08": {
+  "query": "pink chiffon dress",
+  "retrieved": [
+   "DR.2023.413",
+   "DR.2023.386",
+   "DR.2025.228",
+   "DR.2023.462",
+   "DR.2023.181"
+  ],
+  "answer": "The collection includes a pink striped silk chiffon sleeveless dress with a ruffle around the neckline [DR.2023.181]. There is also a pink sheer shirtwaist dress with a bow detail at the center front neck [DR.2023.386]. Another pink sheer dress features beading around a square neckline [DR.2023.413]. A pink crepe dress with pink lace short sleeves and a hip flounce is also present [DR.2023.462]."
+ },
+ "q09": {
+  "query": "black felt hat",
+  "retrieved": [
+   "ACS.2024.439",
+   "ACS.2024.320",
+   "ACS.2025.3",
+   "ACS.2024.314",
+   "ACS.2026.10"
+  ],
+  "answer": "The collection includes a black felt hat from the mid-20th century, 1930-1950, featuring two satin bows and netting at the front brim, along with a Bakelite or Lucite leaf-shaped pin between the bows [ACS.2024.320]. Another black felt hat from the same period has a large black sequence and clear seed bead leaf, with a large black feather extending from the leaf [ACS.2024.314]. There is also a black felt hat from 1930-1950 with no additional description provided [ACS.2026.10]."
+ },
+ "q10": {
+  "query": "printed cotton dress",
+  "retrieved": [
+   "DR.2022.74",
+   "DR.2022.61",
+   "DR.2022.69",
+   "DR.2022.71",
+   "DR.2023.574"
+  ],
+  "answer": "The collection includes several printed cotton dresses. One is a pink, green, and grey floral printed 'feed sack' cotton dress with short puff sleeves [DR.2022.74]. Another is a blue and red floral printed 'feed sack' cotton dress with red bias trim at the sleeve hems and neckline [DR.2022.61]. There is also a blue, orange, yellow, and black floral printed 'feed sack' cotton sleeveless slip-on dress [DR.2022.69]. A blue, orange, yellow, and green floral printed 'feed sack' cotton slip-on dress with cap sleeves is also present [DR.2022.71]."
+ },
+ "q11": {
+  "query": "1920s dress",
+  "retrieved": [
+   "DR.2023.112",
+   "DR.2023.88",
+   "DR.2025.228",
+   "DR.2023.102",
+   "DR.2023.27"
+  ],
+  "answer": "In the 1920s, a popular dress style featured an ivory crepe de chine bodice with orange and navy trim on the center front bow and hem [DR.2023.88]. These dresses often included intricate details like ruffles and bows, reflecting the era's flair for elegance and movement. Some dresses also incorporated lace trim for added sophistication [DR.2023.102]. The collection includes several dresses from this period, though not all descriptions are fully detailed [DR.2025.228]."
+ },
+ "q12": {
+  "query": "1950s hat",
+  "retrieved": [
+   "ACS.2024.252",
+   "ACS.2024.321",
+   "ACS.2024.315",
+   "ACS.2024.316",
+   "ACS.2025.6"
+  ],
+  "answer": "In the 1950s, hats in the collection include a mustard yellow wool felt hat with multiple brown, yellow, and orange feathers [ACS.2024.321], an ivory wool felt hat with satin triangles and a bow at the center front [ACS.2024.315], and an aqua blue ombré brushed velour hat with a wide grosgrain band and a velour bow [ACS.2025.6]. These hats reflect the styles and materials popular during the mid-20th century."
+ },
+ "q13": {
+  "query": "Victorian bodice",
+  "retrieved": [
+   "BD.2022.137",
+   "BD.2023.31",
+   "BD.2025.913",
+   "BD.2022.146",
+   "BD.2025.912"
+  ],
+  "answer": "The collection includes a mid-19th century bodice [BD.2025.913], though it lacks a detailed description. For the late 19th to early 20th century, there is an ivory silk and lace bodice with a net inset yoke and collar [BD.2022.146]. Another example from the early 20th century is a black silk and lace bodice with ivory satin and net at the center front [BD.2023.31]."
+ },
+ "q14": {
+  "query": "1940s women's jacket",
+  "retrieved": [
+   "JKT.2024.40",
+   "JKT.2024.82",
+   "JKT.2023.412",
+   "JKT.2023.576",
+   "JKT.2023.571"
+  ],
+  "answer": "In the 1940s, women's jackets were often made of wool or velvet. A beige wool jacket with rhinestone buttons and decorative tabs is featured [JKT.2024.40]. Another example is a grey beige tailored jacket with tabbed pocket flaps [JKT.2023.412]. A brown jacket with a velvet collar and diagonal welt pockets is also part of the collection [JKT.2023.576]. A pink sheer patterned jacket with rhinestone detailing at the neck is another example from the 1940s [JKT.2023.571]."
+ },
+ "q15": {
+  "query": "1890s skirt",
+  "retrieved": [
+   "SK.2025.678",
+   "SK.2025.813",
+   "SK.2022.77",
+   "SK.2025.812",
+   "SK.2023.21"
+  ],
+  "answer": "In the 1890s, skirts were often made of ivory silk crepe with pintucks down the front and two ruffles at the hem [SK.2023.21]. They also featured a cotton inner skirt for added structure. Some skirts from this period had no description in the records [SK.2025.678]. Others, however, were made of brown dotted print cotton sateen [SK.2022.77]."
+ },
+ "q16": {
+  "query": "1960s shift dress",
+  "retrieved": [
+   "DR.2022.187",
+   "DR.2023.450",
+   "DR.2023.455",
+   "DR.2023.369",
+   "DR.2022.192"
+  ],
+  "answer": "The collection includes a brown wool short sleeve dress from the mid-20th century, dated 1950-1960, featuring two large buttons at center front and large decorative hip pockets [DR.2022.187]. There is also an orange cotton sleeveless dress with white trim and a white belt, also from the 1950-1960 period [DR.2023.455]. These garments reflect the styles of the era, though no specific 1960s shift dress is listed in the records."
+ },
+ "q17": {
+  "query": "early 1900s white dress",
+  "retrieved": [
+   "DR.2025.844",
+   "DR.2025.843",
+   "DR.2025.798",
+   "DR.2025.232",
+   "DR.2022.140"
+  ],
+  "answer": "There is a white cotton short-sleeved dress from the late 19th to early 20th century, featuring rows of lace on the hem and sleeves, along with a square neckline and lace collar [DR.2022.140]. Other dresses from the early 1900s are not described in detail in the records."
+ },
+ "q18": {
+  "query": "1930s evening gown",
+  "retrieved": [
+   "DR.2023.76",
+   "DR.2025.591",
+   "DR.2023.471",
+   "DR.2023.461",
+   "DR.2023.79"
+  ],
+  "answer": "The collection includes a white silk taffeta dress with short puff sleeves and red bows at the shoulders from the 1930s [DR.2023.76]. Another option is an ivory crepe and satin dress with a center front metal zipper and a tie at the waist from the same period [DR.2023.79]. Some dresses from the 1930s are described only by their type and date [DR.2025.591]."
+ },
+ "q19": {
+  "query": "dress with puff sleeves",
+  "retrieved": [
+   "DR.2023.439",
+   "DR.2023.520",
+   "DR.2023.586",
+   "DR.2024.103",
+   "DR.2023.442"
+  ],
+  "answer": "None of the records mention a dress with puff sleeves."
+ },
+ "q20": {
+  "query": "lace collar",
+  "retrieved": [
+   "ACS.2024.187",
+   "ACS.2024.160",
+   "ACS.2024.23",
+   "ACS.2025.51",
+   "ACS.2025.55"
+  ],
+  "answer": "There are several lace collars in the collection. One is a black net collar with decorative ivory lace overlay [ACS.2024.187]. Another is a white cotton collar with pointed lace on the edge [ACS.2024.160]. A third is an ivory sailor style collar with machined lace [ACS.2024.23]. A black lace lappet with a scalloped edge is also present [ACS.2025.55]."
+ },
+ "q21": {
+  "query": "garment with fringe",
+  "retrieved": [
+   "SH.2024.416",
+   "OTW.2023.727",
+   "OTW.2023.725",
+   "ACS.2023.944",
+   "ACS.2026.35"
+  ],
+  "answer": "There is a black velvet shawl with long black silk fringe at the hem [OTW.2023.727]. Another piece is a black heavy quilted long dolman with chenille fringe [OTW.2023.725]. There is also a light red silk crepe de chine shawl with long hand tied fringe [ACS.2023.944]."
+ },
+ "q22": {
+  "query": "embroidered shawl",
+  "retrieved": [
+   "ACS.2023.954",
+   "ACS.2023.745",
+   "ACS.2024.136",
+   "ACS.2025.460",
+   "ACS.2023.744"
+  ],
+  "answer": "The collection includes several embroidered shawls. One is an ivory silk shawl with floral embroidery and silk fringe [ACS.2023.745]. Another is a light blue silk shawl with floral embroidery and silk fringe [ACS.2023.744]. A third is an ivory silk shawl with silk embroidery and long fringe [ACS.2024.136]. There is also a wedding shawl made of ivory silk with silk fringe and embroidery [ACS.2023.954]."
+ },
+ "q23": {
+  "query": "pleated skirt",
+  "retrieved": [
+   "SK.2025.587",
+   "SK.2025.813",
+   "SK.2024.404",
+   "SK.2025.214",
+   "SK.2025.914"
+  ],
+  "answer": "There are no records in the collection that specifically describe a pleated skirt. The skirts in the collection from the Early 20th century [SK.2024.404], [SK.2025.214], and [SK.2025.813] do not mention pleats. Similarly, the skirt from the Late 19th to Early 20th century [SK.2025.914] and the Mid 20th century skirt [SK.2025.587] also lack descriptions of pleats."
+ },
+ "q24": {
+  "query": "sailor collar",
+  "retrieved": [
+   "ACS.2024.160",
+   "SH.2024.60",
+   "ACS.2024.315",
+   "ACS.2025.276",
+   "ACS.2024.301"
+  ],
+  "answer": "There is no specific record for a \"sailor collar\" in the provided collection. However, a navy sailor-style blouse with white trim and buttons is available [SH.2024.60]."
+ },
+ "q25": {
+  "query": "lace-up boots",
+  "retrieved": [
+   "ACS.2024.169",
+   "ACS.2023.990",
+   "ACS.2023.989",
+   "ACS.2025.462",
+   "ACS.2023.988"
+  ],
+  "answer": "The collection includes several lace-up boots. [ACS.2023.990] is dark brown leather with a tall 3” heel. [ACS.2023.989] is tan leather with a tall 3” heel. [ACS.2023.988] is white leather with a 2” heel. All have leather soles."
+ },
+ "q26": {
+  "query": "beaded purse",
+  "retrieved": [
+   "ACS.2024.196",
+   "ACS.2023.977",
+   "ACS.2024.202",
+   "ACS.2023.971",
+   "ACS.2024.182"
+  ],
+  "answer": "There are several beaded purses in the collection. One is a beaded purse with a pansy’s in a row at front and back, closing with a decorative metal clasp with a blue bead in the clip and a metal chain [ACS.2024.202]. Another is a white background with floral design, seed beaded purse with a beaded handle and a silver clasp [ACS.2023.971]."
+ },
+ "q27": {
+  "query": "hand fan",
+  "retrieved": [
+   "ACS.2024.112",
+   "ACS.2024.109",
+   "ACS.2024.114",
+   "ACS.2024.111",
+   "ACS.2024.110"
+  ],
+  "answer": "The collection includes several hand fans from the 19th and 20th centuries. One fan is made of organdy with a painted design and has wooden spines with a bright pink lead spine [ACS.2024.111]. Another fan is also organdy, featuring a printed design of a white peacock, with wooden spines and double white tassels [ACS.2024.114]. A third fan is made of ivory with a floral painted design and gold accents, along with wooden spines [ACS.2024.110]."
+ },
+ "q28": {
+  "query": "small drawstring bag",
+  "retrieved": [
+   "ACS.2024.47",
+   "ACS.2024.345",
+   "ACS.2024.340",
+   "ACS.2024.341",
+   "ACS.2023.927"
+  ],
+  "answer": "There is a black silk faille reticule with box pleated gross grain trim around the opening and self-fabric drawstring handles [ACS.2024.47]. It is a small drawstring bag. Other reticules from the same period have no detailed descriptions [ACS.2024.345], [ACS.2024.340], [ACS.2024.341]."
+ },
+ "q29": {
+  "query": "bow tie",
+  "retrieved": [
+   "ACS.2024.143",
+   "ACS.2024.284",
+   "ACS.2024.144",
+   "ACS.2024.145",
+   "ACS.2024.302"
+  ],
+  "answer": "The collection includes several bow ties from the 20th century. One is a navy and white polka dot bow tie with light blue accents on printed silk twill [ACS.2024.143]. Another is black and white linear printed silk twill [ACS.2024.144]. A third features a brown background with grey bowties printed on silk twill [ACS.2024.145]. One bow tie from the mid-20th century has no detailed description [ACS.2024.302]."
+ },
+ "q30": {
+  "query": "straw hat with flowers",
+  "retrieved": [
+   "ACS.2025.259",
+   "ACS.2024.379",
+   "ACS.2024.362",
+   "ACS.2026.8",
+   "ACS.2024.292"
+  ],
+  "answer": "The collection includes a wide brim straw hat with a yellow floral decorative garland around the outside band [ACS.2024.362]. Another hat from the Early 20th century features wire frame with pale pink horsehair trim and roses along the underside of the brim [ACS.2024.379]. There is also a Mid 20th century hat made of wool felt covered in pink feathers [ACS.2024.292]. The records do not mention a straw hat with flowers in the exact description requested."
+ },
+ "q31": {
+  "query": "floral print dress",
+  "retrieved": [
+   "DR.2022.74",
+   "DR.2022.71",
+   "DR.2022.61",
+   "DR.2022.55",
+   "DR.2023.516"
+  ],
+  "answer": "The collection includes several floral print dresses. One is a pink, green, and grey floral printed 'feed sack' cotton dress with short puff sleeves [DR.2022.74]. Another is a blue, orange, yellow, and green floral printed 'feed sack' cotton slip-on dress with cap sleeves [DR.2022.71]. There is also a blue and red floral printed 'feed sack' cotton short sleeved dress with red bias trim [DR.2022.61]. A black large floral printed silk dress with a cowl like neckline is also present [DR.2022.55]. Additionally, an ivory dress with a pink and purple floral print is included [DR.2023.516]."
+ },
+ "q32": {
+  "query": "sparkly evening bag",
+  "retrieved": [
+   "ACS.2023.980",
+   "ACS.2024.116",
+   "ACS.2024.117",
+   "ACS.2024.210",
+   "ACS.2024.343"
+  ],
+  "answer": "The collection includes a white background purse with a silver seed bead design [ACS.2023.980], and an ivory silk clutch with scattered seed beads and a beaded floral design on the front [ACS.2024.210]. Both are from the Early to Mid 20th century. Another clutch from the same period features a gold clasp [ACS.2024.210]."
+ },
+ "q33": {
+  "query": "wide-brimmed hat",
+  "retrieved": [
+   "ACS.2024.363",
+   "ACS.2026.10",
+   "ACS.2025.278",
+   "ACS.2025.289",
+   "ACS.2026.9"
+  ],
+  "answer": "There is a wide-brimmed hat made of black straw from the Early 20th century [ACS.2024.363]. It is adorned with a black velvet ribbon around the band. Other wide-brimmed hats from the same period are also in the collection but lack detailed descriptions [ACS.2025.278]. Another wide-brimmed hat from the Mid 20th century is also present, though its specific details are not provided [ACS.2026.10]."
+ },
+ "q34": {
+  "query": "men's overcoat",
+  "retrieved": [
+   "OTW.2023.907",
+   "OTW.2023.596",
+   "OTW.2021.1",
+   "OTW.2023.905",
+   "OTW.2023.910"
+  ],
+  "answer": "The collection includes a brown, green, and tan heavy wool plaid overcoat with a shawl collar [OTW.2021.1]. It features a double-breasted center front closure with large black buttons and buttonholes. There are two front patch pockets. Another overcoat is a brown and grey wool plaid coat with large patch pockets [OTW.2023.910]."
+ },
+ "q35": {
+  "query": "colorful plaid",
+  "retrieved": [
+   "ACS.2024.171",
+   "DR.2023.423",
+   "ACS.2023.838",
+   "ACS.2024.172",
+   "ACS.2026.53"
+  ],
+  "answer": "The plaid shirtwaist dress is made of grey, yellow, and white cotton [DR.2023.423]. The cotton tie features white, tan, and grey with black striped plaid printing [ACS.2023.838]. No other garments in the collection are described as colorful plaid."
+ },
+ "q36": {
+  "query": "elegant long gloves",
+  "retrieved": [
+   "ACS.2024.122",
+   "ACS.2023.953",
+   "ACS.2025.89",
+   "ACS.2023.961",
+   "ACS.2023.962"
+  ],
+  "answer": "The collection includes long white leather gloves with 3 pearl buttons at the wrist opening [ACS.2023.962]. There are also long dark brown synthetic gloves from the Mid 20th century [ACS.2024.122]. Another pair of long gloves is made of white leather and features pearl ball buttons and buttonholes at the wrist [ACS.2023.961]."
+ },
+ "q37": {
+  "query": "children's clothing",
+  "retrieved": [
+   "CSH.2025.920",
+   "CDR.2025.922",
+   "CSH.2025.921",
+   "BD.2025.913",
+   "CSH.2025.918"
+  ],
+  "answer": "The records provided do not include any specific items of children's clothing. All cited garments are for adults, including shirts and a bodice, with no details about children's attire available in the collection."
+ },
+ "q38": {
+  "query": "something a woman would wear to a 1920s party",
+  "retrieved": [
+   "DR.2023.88",
+   "ENS.2024.85",
+   "DR.2024.215",
+   "ENS.2023.169",
+   "DR.2023.94"
+  ],
+  "answer": "In the 1920s, a woman might wear an ivory silk crepe de chine dress with a large lace collar cape [DR.2023.94], or an ivory crepe de chine dress with orange and navy trim on the center front bow and hem [DR.2023.88]. Both garments reflect the elegance and style of the era. Some dresses from this period, like the dark pink silk crepe dress with a lace at the yoke, were also paired with matching jackets [ENS.2023.169]."
+ },
+ "q39": {
+  "query": "an outfit for a summer day in the 1950s",
+  "retrieved": [
+   "ENS.2023.562",
+   "ENS.2023.497",
+   "ENS.2022.88",
+   "ENS.2023.35",
+   "ENS.2023.466"
+  ],
+  "answer": "In the 1950s, a summer outfit could include a black cotton dress with pink, green, and grey stripes [ENS.2023.562]. This dress is paired with a blouse, making it a complete outfit. Another option is a fawn-colored skirt and blouse set with a multi-ruffled flounce blouse and six self-fabric covered buttons [ENS.2022.88]. The skirt features a side seam metal zipper."
+ },
+ "q40": {
+  "query": "something warm for winter",
+  "retrieved": [
+   "OTW.2023.905",
+   "OTW.2023.596",
+   "OTW.2025.282",
+   "OTW.2023.612",
+   "OTW.2023.629"
+  ],
+  "answer": "For a warm winter coat, consider [OTW.2023.905], a long black double-breasted coat with a fur lining. Also, [OTW.2023.612] is a black Persian lamb short jacket with two large buttons at the center front and cuffs on the sleeves. [OTW.2023.629] is another black Persian lamb short coat with buttons down the center front. These garments are well-suited for colder weather."
+ }
+}
