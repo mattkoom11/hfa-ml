@@ -36,6 +36,20 @@ def assign_splits(df: pd.DataFrame, seed: int = SEED) -> pd.Series:
     return split
 
 
+def extend_splits(df: pd.DataFrame, previous: dict[str, str]) -> pd.Series:
+    """Keep every garment's frozen split; assign only garments that are new since the last run.
+
+    New garments are split among themselves with a seed derived from how many were
+    already assigned, so re-running on the same data gives the same answer.
+    """
+    split = df["accession"].map(previous)
+    new = split.isna()
+    if new.any():
+        fresh = df.loc[new].reset_index(drop=True)
+        split.loc[new] = assign_splits(fresh, seed=SEED + len(previous)).values
+    return split
+
+
 def main() -> None:
     clean = pd.read_parquet(ROOT / "data/processed/collection_clean.parquet")
     cov = pd.read_parquet(ROOT / "data/processed/photo_coverage.parquet")
@@ -54,8 +68,16 @@ def main() -> None:
     # JPGs the ML phases can read: ones on the share plus ones converted from RAW.
     g["n_ml_jpg"] = g["n_web"] + g["n_converted"]
     g["has_photos"] = g["n_shots"] > 0
-    g["split"] = assign_splits(g.reset_index(drop=True)).values
-    g.to_parquet(ROOT / "data/processed/garments.parquet", index=False)
+    out = ROOT / "data/processed/garments.parquet"
+    g = g.reset_index(drop=True)
+    if out.exists():  # splits are frozen: never reshuffle garments that already have one
+        prev = pd.read_parquet(out, columns=["accession", "split"])
+        g["split"] = extend_splits(g, dict(zip(prev["accession"], prev["split"]))).values
+        print(f"kept {g['accession'].isin(prev['accession']).sum()} frozen splits, "
+              f"assigned {(~g['accession'].isin(prev['accession'])).sum()} new garments")
+    else:
+        g["split"] = assign_splits(g).values
+    g.to_parquet(out, index=False)
 
     orphans = sorted(set(cov["accession"]) - set(clean["accession"].dropna()))
     print(f"garments: {len(g)}  photographed: {g['has_photos'].sum()}  "

@@ -10,7 +10,7 @@ import pytest
 
 CI_MODULES = ["hfa.accession", "hfa.clean", "hfa.dates", "hfa.manifest", "hfa.splits", "hfa.rubric",
               "hfa.label_sample", "hfa.label_server", "hfa.label_audit", "hfa.attr_keyword", "hfa.attr_eval",
-              "hfa.recsys", "hfa.rec_eval", "hfa.search", "hfa.search_eval", "hfa.rag", "hfa.ci_check"]
+              "hfa.recsys", "hfa.rec_eval", "hfa.search", "hfa.search_eval", "hfa.rag", "hfa.ci_check", "hfa.refresh"]
 
 
 @pytest.mark.parametrize("name", CI_MODULES)
