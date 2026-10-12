@@ -1,0 +1,5 @@
+{
+  "enabledPlugins": {
+    "mlflow@claude-plugins-official": true
+  }
+}
