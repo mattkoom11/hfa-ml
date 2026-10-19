@@ -42,6 +42,7 @@ Splits stay frozen: existing garments keep theirs, and new garments are split am
 | Index the photos | `.venv/bin/python -m hfa.manifest` | `data/interim/photo_manifest.parquet`, `data/processed/photo_coverage.parquet` |
 | Join + freeze splits | `.venv/bin/python -m hfa.splits` | `data/processed/garments.parquet`, `data/reports/photo_orphans.csv`, MLflow run in `phase0-data` |
 | RAW → JPG for RAW-only garments | `.venv/bin/python -m hfa.convert` | `data/interim/jpg/<accession>/*.jpg`, `data/interim/converted_jpgs.parquet` |
+| Woven-timeline totals for the frontend | `.venv/bin/python -m hfa.export_weave --frontend ../UVA_Collectiveaccess_Frontend` | `data/exports/collection-weave.json`, copied to the frontend's `data/` (per-decade aggregates only) |
 | Tests | `.venv/bin/python -m pytest -q` | |
 
 ## Experiment tracking
