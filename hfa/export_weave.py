@@ -40,8 +40,11 @@ PLURAL = {"color": "colors", "material": "materials", "technique": "techniques"}
 
 
 def _assert_no_personal_data(columns) -> None:
+    # A raise, not an assert: `python -O` strips asserts, and this guard keeps
+    # donor data out of a public repo.
     leaked = FORBIDDEN & set(columns)
-    assert not leaked, f"refusing to export: personal-data columns {sorted(leaked)}"
+    if leaked:
+        raise ValueError(f"refusing to export: personal-data columns {sorted(leaked)}")
 
 
 def load_vocab() -> dict[str, set[str]]:

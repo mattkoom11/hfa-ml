@@ -116,7 +116,7 @@ def test_no_dated_rows_gives_no_decades():
 
 def test_refuses_tables_with_personal_data_columns():
     table = rows(("A.1", "1910", "1919", "silk", "black", "")).assign(email="someone@example.com")
-    with pytest.raises(AssertionError, match="personal-data"):
+    with pytest.raises(ValueError, match="personal-data"):
         build_weave(table, VOCAB, {}, "ci-fixture", "2026-10-19")
 
 
@@ -133,7 +133,7 @@ def test_scanned_dates_keeps_only_dated_catalogued_accessions():
 
 def test_scanned_dates_refuses_personal_data_columns():
     catalog = pd.DataFrame({"accession": ["DR.1"], "date_earliest": [1910.0], "date_latest": [1920.0], "email": ["x"]})
-    with pytest.raises(AssertionError, match="personal-data"):
+    with pytest.raises(ValueError, match="personal-data"):
         scanned_dates(catalog.set_index("accession"), ["DR.1"])
 
 
